@@ -27,25 +27,336 @@ commands:
           tag: << parameters.major >>.<< parameters.minor >>v<< parameters.patch >>
       - docker-publish/deploy:
           image: natescarlet/nuke
-
 jobs:
-  publish-10_5v7:
+  publish-9-0-1:
+    executor: docker
+    steps:
+      - publish:
+          major: 9
+          minor: 0
+          patch: 1
+  publish-9-0-2:
+    executor: docker
+    steps:
+      - publish:
+          major: 9
+          minor: 0
+          patch: 2
+  publish-9-0-3:
+    executor: docker
+    steps:
+      - publish:
+          major: 9
+          minor: 0
+          patch: 3
+  publish-9-0-4:
+    executor: docker
+    steps:
+      - publish:
+          major: 9
+          minor: 0
+          patch: 4
+  publish-9-0-5:
+    executor: docker
+    steps:
+      - publish:
+          major: 9
+          minor: 0
+          patch: 5
+  publish-9-0-6:
+    executor: docker
+    steps:
+      - publish:
+          major: 9
+          minor: 0
+          patch: 6
+  publish-9-0-7:
+    executor: docker
+    steps:
+      - publish:
+          major: 9
+          minor: 0
+          patch: 7
+  publish-9-0-8:
+    executor: docker
+    steps:
+      - publish:
+          major: 9
+          minor: 0
+          patch: 8
+  publish-9-0-9:
+    executor: docker
+    steps:
+      - publish:
+          major: 9
+          minor: 0
+          patch: 9
+  publish-10-0-1:
+    executor: docker
+    steps:
+      - publish:
+          major: 10
+          minor: 0
+          patch: 1
+  publish-10-0-2:
+    executor: docker
+    steps:
+      - publish:
+          major: 10
+          minor: 0
+          patch: 2
+  publish-10-0-3:
+    executor: docker
+    steps:
+      - publish:
+          major: 10
+          minor: 0
+          patch: 3
+  publish-10-0-4:
+    executor: docker
+    steps:
+      - publish:
+          major: 10
+          minor: 0
+          patch: 4
+  publish-10-0-5:
+    executor: docker
+    steps:
+      - publish:
+          major: 10
+          minor: 0
+          patch: 5
+  publish-10-0-6:
+    executor: docker
+    steps:
+      - publish:
+          major: 10
+          minor: 0
+          patch: 6
+  publish-10-5-1:
+    executor: docker
+    steps:
+      - publish:
+          major: 10
+          minor: 5
+          patch: 1
+  publish-10-5-2:
+    executor: docker
+    steps:
+      - publish:
+          major: 10
+          minor: 5
+          patch: 2
+  publish-10-5-3:
+    executor: docker
+    steps:
+      - publish:
+          major: 10
+          minor: 5
+          patch: 3
+  publish-10-5-4:
+    executor: docker
+    steps:
+      - publish:
+          major: 10
+          minor: 5
+          patch: 4
+  publish-10-5-5:
+    executor: docker
+    steps:
+      - publish:
+          major: 10
+          minor: 5
+          patch: 5
+  publish-10-5-6:
+    executor: docker
+    steps:
+      - publish:
+          major: 10
+          minor: 5
+          patch: 6
+  publish-10-5-7:
     executor: docker
     steps:
       - publish:
           major: 10
           minor: 5
           patch: 7
-  publish-11_3v2:
+  publish-10-5-8:
+    executor: docker
+    steps:
+      - publish:
+          major: 10
+          minor: 5
+          patch: 8
+  publish-11-0-1:
+    executor: docker
+    steps:
+      - publish:
+          major: 11
+          minor: 0
+          patch: 1
+  publish-11-0-2:
+    executor: docker
+    steps:
+      - publish:
+          major: 11
+          minor: 0
+          patch: 2
+  publish-11-0-3:
+    executor: docker
+    steps:
+      - publish:
+          major: 11
+          minor: 0
+          patch: 3
+  publish-11-0-4:
+    executor: docker
+    steps:
+      - publish:
+          major: 11
+          minor: 0
+          patch: 4
+  publish-11-1-1:
+    executor: docker
+    steps:
+      - publish:
+          major: 11
+          minor: 1
+          patch: 1
+  publish-11-1-2:
+    executor: docker
+    steps:
+      - publish:
+          major: 11
+          minor: 1
+          patch: 2
+  publish-11-1-3:
+    executor: docker
+    steps:
+      - publish:
+          major: 11
+          minor: 1
+          patch: 3
+  publish-11-1-4:
+    executor: docker
+    steps:
+      - publish:
+          major: 11
+          minor: 1
+          patch: 4
+  publish-11-1-5:
+    executor: docker
+    steps:
+      - publish:
+          major: 11
+          minor: 1
+          patch: 5
+  publish-11-1-6:
+    executor: docker
+    steps:
+      - publish:
+          major: 11
+          minor: 1
+          patch: 6
+  publish-11-2-1:
+    executor: docker
+    steps:
+      - publish:
+          major: 11
+          minor: 2
+          patch: 1
+  publish-11-2-2:
+    executor: docker
+    steps:
+      - publish:
+          major: 11
+          minor: 2
+          patch: 2
+  publish-11-2-3:
+    executor: docker
+    steps:
+      - publish:
+          major: 11
+          minor: 2
+          patch: 3
+  publish-11-2-4:
+    executor: docker
+    steps:
+      - publish:
+          major: 11
+          minor: 2
+          patch: 4
+  publish-11-2-5:
+    executor: docker
+    steps:
+      - publish:
+          major: 11
+          minor: 2
+          patch: 5
+  publish-11-3-1:
+    executor: docker
+    steps:
+      - publish:
+          major: 11
+          minor: 3
+          patch: 1
+  publish-11-3-2:
     executor: docker
     steps:
       - publish:
           major: 11
           minor: 3
           patch: 2
+  publish-11-3-3:
+    executor: docker
+    steps:
+      - publish:
+          major: 11
+          minor: 3
+          patch: 3
 workflows:
   version: 2
   build and publish:
     jobs:
-      - publish-10_5v7
-      - publish-11_3v2
+      - publish-9-0-1
+      - publish-9-0-2
+      - publish-9-0-3
+      - publish-9-0-4
+      - publish-9-0-5
+      - publish-9-0-6
+      - publish-9-0-7
+      - publish-9-0-8
+      - publish-9-0-9
+      - publish-10-0-1
+      - publish-10-0-2
+      - publish-10-0-3
+      - publish-10-0-4
+      - publish-10-0-5
+      - publish-10-0-6
+      - publish-10-5-1
+      - publish-10-5-2
+      - publish-10-5-3
+      - publish-10-5-4
+      - publish-10-5-5
+      - publish-10-5-6
+      - publish-10-5-7
+      - publish-10-5-8
+      - publish-11-0-1
+      - publish-11-0-2
+      - publish-11-0-3
+      - publish-11-0-4
+      - publish-11-1-1
+      - publish-11-1-2
+      - publish-11-1-3
+      - publish-11-1-4
+      - publish-11-1-5
+      - publish-11-1-6
+      - publish-11-2-1
+      - publish-11-2-2
+      - publish-11-2-3
+      - publish-11-2-4
+      - publish-11-2-5
+      - publish-11-3-1
+      - publish-11-3-2
+      - publish-11-3-3

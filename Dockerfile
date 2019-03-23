@@ -24,7 +24,7 @@ RUN apt-get update &&\
     apt-get -y install wget unzip x11-apps libgl1-mesa-glx libglu1-mesa libglib2.0-0 libasound2 x11vnc
 
 RUN wget -P /tmp/ \
-    http://thefoundry.s3.amazonaws.com/products/nuke/releases/${NUKE_VERSION}/Nuke${NUKE_VERSION}-linux-x86-release-64.tgz &&\
+    https://thefoundry.s3.amazonaws.com/products/nuke/releases/${NUKE_VERSION}/Nuke${NUKE_VERSION}-linux-x86-release-64.tgz &&\
     tar -C /tmp -xvzf /tmp/Nuke${NUKE_VERSION}-linux-x86-release-64.tgz &&\
     mkdir -p /app/ &&\
     unzip /tmp/Nuke${NUKE_VERSION}-linux-x86-release-64-installer -d /app/Nuke${NUKE_VERSION} &&\
