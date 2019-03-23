@@ -1,0 +1,51 @@
+version: 2.1
+orbs:
+  docker-publish: circleci/docker-publish@0.1.6
+executors:
+  docker: docker-publish/docker
+commands:
+  publish:
+    parameters:
+      major:
+        type: integer
+      minor:
+        type: integer
+      patch:
+        type: integer
+    steps:
+      - checkout
+      - setup_remote_docker
+      - docker-publish/check
+      - docker-publish/build:
+          extra_build_args: >-
+            --build-arg DEBIAN_MIRROR=
+            --build-arg foundry_LICENSE=
+            --build-arg NUKE_MAJOR=<< parameters.major >>
+            --build-arg NUKE_MINOR=<< parameters.minor >>
+            --build-arg NUKE_PATCH=<< parameters.patch >>
+          image: natescarlet/nuke
+          tag: << parameters.major >>.<< parameters.minor >>v<< parameters.patch >>
+      - docker-publish/deploy:
+          image: natescarlet/nuke
+
+jobs:
+  publish-10_5v7:
+    executor: docker
+    steps:
+      - publish:
+          major: 10
+          minor: 5
+          patch: 7
+  publish-11_3v2:
+    executor: docker
+    steps:
+      - publish:
+          major: 11
+          minor: 3
+          patch: 2
+workflows:
+  version: 2
+  build and publish:
+    jobs:
+      - publish-10_5v7
+      - publish-11_3v2
