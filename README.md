@@ -42,7 +42,7 @@ Mount your FLEXlm license file
 docker run -it --rm -e -v <your license path>:/usr/local/foundry/FLEXlm natescarlet/nuke:11.3v2
 ```
 
-### Build your self
+### Build yourself
 
 For nuke 10.5v2
 
