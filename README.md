@@ -28,13 +28,15 @@ Copyright (c) 2017 The Foundry Visionmongers Ltd.  All Rights Reserved.
 
 #### RLM
 
-Use environment variable `foundry_LICENSE` to specify license (or mount your FLEXlm license with `-v <your license path>:/usr/local/foundry/FLEXlm`)
+Use environment variable `foundry_LICENSE` to specify license server
 
 ```shell
 docker run -it --rm -e foundry_LICENSE=<your license server> natescarlet/nuke:11.3v2
 ```
 
 #### FLEXlm
+
+Mount your FLEXlm license file
 
 ```shell
 docker run -it --rm -e -v <your license path>:/usr/local/foundry/FLEXlm natescarlet/nuke:11.3v2
