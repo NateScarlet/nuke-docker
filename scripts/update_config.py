@@ -22,12 +22,19 @@ commands:
         type: integer
       patch:
         type: integer
+      extra_build_args:
+        description: >
+          Extra flags to pass to docker build. For examples, see
+          https://docs.docker.com/engine/reference/commandline/build
+        type: string
+        default: ''
     steps:
       - checkout
       - setup_remote_docker
       - docker-publish/check
       - docker-publish/build:
           extra_build_args: >-
+            <<#parameters.extra_build_args>><<parameters.extra_build_args>><</parameters.extra_build_args>>
             --build-arg DEBIAN_MIRROR=
             --build-arg foundry_LICENSE=
             --build-arg NUKE_MAJOR=<< parameters.major >>
@@ -120,6 +127,10 @@ jobs:
           major: {i[0]}
           minor: {i[1]}
           patch: {i[2]}
+'''
+
+    yield f'''\
+          extra_build_args: --tag natescarlet/nuke:latest
 '''
 
     yield '''\
