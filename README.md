@@ -5,7 +5,7 @@
 
 [GitHub](https://github.com/NateScarlet/nuke-docker)
 
-[Docker Hub](https://hub.docker.com/r/natescarlet/nuke/tags)
+[Docker Hub](https://hub.docker.com/r/natescarlet/nuke)
 
 The foundry nuke in docker container
 
