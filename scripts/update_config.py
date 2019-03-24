@@ -137,7 +137,7 @@ workflows:
 
 def main():
     logging.basicConfig(level=logging.DEBUG)
-    with (Path(__file__).parent / 'config.yml').open('w', encoding='utf-8') as f:
+    with (Path(__file__).parent.parent / '.circleci' / 'config.yml').open('w', encoding='utf-8') as f:
         for i in generate_config():
             f.write(i)
 
