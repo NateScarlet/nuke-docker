@@ -2,7 +2,7 @@ FROM debian AS base
 
 RUN set +e
 
-ARG DEBIAN_MIRROR=http://mirrors.aliyun.com/debian
+ARG DEBIAN_MIRROR=http://mirrors.tuna.tsinghua.edu.cn/debian
 RUN if [ ! -z $DEBIAN_MIRROR ]; then \
     sed -i "s@http://.\+\.debian\.org/debian@$DEBIAN_MIRROR@g" /etc/apt/sources.list \
     && cat /etc/apt/sources.list; \
@@ -10,7 +10,7 @@ RUN if [ ! -z $DEBIAN_MIRROR ]; then \
 
 ARG NUKE_MAJOR=10
 ARG NUKE_MINOR=5
-ARG NUKE_PATCH=7
+ARG NUKE_PATCH=8
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV NUKE_MAJOR=${NUKE_MAJOR}
@@ -21,20 +21,26 @@ ENV NUKE_VERSION=${NUKE_MAJOR}.${NUKE_MINOR}v${NUKE_PATCH}
 FROM base AS install
 
 RUN apt-get update &&\
-    apt-get -y install wget unzip x11-apps libgl1-mesa-glx libglu1-mesa libglib2.0-0 libasound2 x11vnc
+    apt-get -y install \
+    wget p7zip-full x11-apps x11vnc \
+    libglu1-mesa libglib2.0-0 libsdl1.2debian libgl1-mesa-glx
+
+RUN mkdir -p /app/Nuke${NUKE_VERSION}
+RUN useradd -rmU -s /bin/bash nuke
+RUN chown nuke:nuke /app/Nuke${NUKE_VERSION}
+USER nuke
+WORKDIR /home/nuke
 
 RUN wget -P /tmp/ \
     https://thefoundry.s3.amazonaws.com/products/nuke/releases/${NUKE_VERSION}/Nuke${NUKE_VERSION}-linux-x86-release-64.tgz &&\
     tar -C /tmp -xvzf /tmp/Nuke${NUKE_VERSION}-linux-x86-release-64.tgz &&\
-    mkdir -p /app/ &&\
-    unzip /tmp/Nuke${NUKE_VERSION}-linux-x86-release-64-installer -d /app/Nuke${NUKE_VERSION} &&\
-    rm -f /tmp/Nuke${NUKE_VERSION}-linux-x86-release-64-installer
+    7z x -tzip -bsp1 /tmp/Nuke${NUKE_VERSION}-linux-x86-release-64-installer -o/app/Nuke${NUKE_VERSION} &&\
+    rm -vf /tmp/*
 
+USER root
 RUN ln -s /app/Nuke${NUKE_VERSION}/Nuke${NUKE_MAJOR}.${NUKE_MINOR} /usr/local/bin/Nuke
 RUN ln -s /app/Nuke${NUKE_VERSION}/Nuke${NUKE_MAJOR}.${NUKE_MINOR} /usr/local/bin/Nuke${NUKE_MAJOR}.${NUKE_MINOR}
-RUN useradd -rmU -s /bin/bash nuke
 USER nuke
-WORKDIR /home/nuke
 
 ENV PATH=${PATH}:/app/Nuke${NUKE_VERSION}
 ENV PYTHON_PATH=/app/Nuke${NUKE_VERSION}
