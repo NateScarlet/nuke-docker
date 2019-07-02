@@ -35,7 +35,7 @@ RUN apt-get update &&\
     apt-get -y install \
     x11-apps x11vnc \
     libglu1-mesa libglib2.0-0 libsdl1.2debian libgl1-mesa-glx \
-    sudo 
+    sudo python-pip
 
 COPY --from=download /app/ /app/
 
