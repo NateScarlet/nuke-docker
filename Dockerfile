@@ -2,7 +2,7 @@ FROM debian AS base
 
 RUN set +e
 
-ARG DEBIAN_MIRROR=http://mirrors.tuna.tsinghua.edu.cn/debian
+ARG DEBIAN_MIRROR=http://mirrors.huaweicloud.com/debian
 RUN if [ ! -z $DEBIAN_MIRROR ]; then \
     sed -i "s@http://.\+\.debian\.org/debian@$DEBIAN_MIRROR@g" /etc/apt/sources.list \
     && cat /etc/apt/sources.list; \
@@ -18,24 +18,32 @@ ENV NUKE_MINOR=${NUKE_MINOR}
 ENV NUKE_PATCH=${NUKE_PATCH}
 ENV NUKE_VERSION=${NUKE_MAJOR}.${NUKE_MINOR}v${NUKE_PATCH}
 
-FROM base AS install
+RUN apt-get update
 
-RUN apt-get update &&\
-    apt-get -y install \
-    wget p7zip-full x11-apps x11vnc \
-    libglu1-mesa libglib2.0-0 libsdl1.2debian libgl1-mesa-glx
+FROM base as download
 
-RUN mkdir -p /app/Nuke${NUKE_VERSION}
-RUN useradd -rmU -s /bin/bash nuke
-RUN chown nuke:nuke /app/Nuke${NUKE_VERSION}
-USER nuke
-WORKDIR /home/nuke
-
+RUN apt-get -y install wget p7zip-full
 RUN wget -P /tmp/ \
     https://thefoundry.s3.amazonaws.com/products/nuke/releases/${NUKE_VERSION}/Nuke${NUKE_VERSION}-linux-x86-release-64.tgz &&\
     tar -C /tmp -xvzf /tmp/Nuke${NUKE_VERSION}-linux-x86-release-64.tgz &&\
     7z x -tzip -bsp1 /tmp/Nuke${NUKE_VERSION}-linux-x86-release-64-installer -o/app/Nuke${NUKE_VERSION} &&\
     rm -vf /tmp/*
+
+FROM base AS install
+
+RUN apt-get update &&\
+    apt-get -y install \
+    x11-apps x11vnc \
+    libglu1-mesa libglib2.0-0 libsdl1.2debian libgl1-mesa-glx \
+    sudo 
+
+COPY --from=download /app/ /app/
+
+RUN useradd -rmU -s /bin/bash nuke &&\
+    chown nuke:nuke /app/Nuke${NUKE_VERSION} &&\
+    echo "nuke ALL=(ALL) NOPASSWD:ALL" | (EDITOR='tee -a' visudo)
+USER nuke
+WORKDIR /home/nuke
 
 USER root
 RUN ln -s /app/Nuke${NUKE_VERSION}/Nuke${NUKE_MAJOR}.${NUKE_MINOR} /usr/local/bin/Nuke
@@ -51,11 +59,11 @@ ENV foundry_LICENSE=${foundry_LICENSE}
 FROM install AS test
 
 RUN python --version
-RUN if [ ! -z ${foundry_LICENSE} ];\
-    then \
+RUN if [ ! -z ${foundry_LICENSE} ];then\
     python -c 'import nuke; print(nuke.NUKE_VERSION_STRING)' &&\
     Nuke --version;\
     fi
+RUN sudo echo testing_sudo
 
 FROM install AS release
 
