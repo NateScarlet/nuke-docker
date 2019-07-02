@@ -135,5 +135,50 @@ docker build --build-arg NUKE_MAJOR=10 --build-arg NUKE_MINOR=5 --build-arg NUKE
 ![Version](https://images.microbadger.com/badges/version/natescarlet/nuke:11.0v4.svg)
 ![Image Info](https://images.microbadger.com/badges/image/natescarlet/nuke:11.0v4.svg)
 
+![Version](https://images.microbadger.com/badges/version/natescarlet/nuke:11.1v1.svg)
+![Image Info](https://images.microbadger.com/badges/image/natescarlet/nuke:11.1v1.svg)
+
+![Version](https://images.microbadger.com/badges/version/natescarlet/nuke:11.1v2.svg)
+![Image Info](https://images.microbadger.com/badges/image/natescarlet/nuke:11.1v2.svg)
+
+![Version](https://images.microbadger.com/badges/version/natescarlet/nuke:11.1v3.svg)
+![Image Info](https://images.microbadger.com/badges/image/natescarlet/nuke:11.1v3.svg)
+
+![Version](https://images.microbadger.com/badges/version/natescarlet/nuke:11.1v4.svg)
+![Image Info](https://images.microbadger.com/badges/image/natescarlet/nuke:11.1v4.svg)
+
+![Version](https://images.microbadger.com/badges/version/natescarlet/nuke:11.1v5.svg)
+![Image Info](https://images.microbadger.com/badges/image/natescarlet/nuke:11.1v5.svg)
+
+![Version](https://images.microbadger.com/badges/version/natescarlet/nuke:11.1v6.svg)
+![Image Info](https://images.microbadger.com/badges/image/natescarlet/nuke:11.1v6.svg)
+
+![Version](https://images.microbadger.com/badges/version/natescarlet/nuke:11.2v1.svg)
+![Image Info](https://images.microbadger.com/badges/image/natescarlet/nuke:11.2v1.svg)
+
+![Version](https://images.microbadger.com/badges/version/natescarlet/nuke:11.2v2.svg)
+![Image Info](https://images.microbadger.com/badges/image/natescarlet/nuke:11.2v2.svg)
+
+![Version](https://images.microbadger.com/badges/version/natescarlet/nuke:11.2v3.svg)
+![Image Info](https://images.microbadger.com/badges/image/natescarlet/nuke:11.2v3.svg)
+
+![Version](https://images.microbadger.com/badges/version/natescarlet/nuke:11.2v4.svg)
+![Image Info](https://images.microbadger.com/badges/image/natescarlet/nuke:11.2v4.svg)
+
+![Version](https://images.microbadger.com/badges/version/natescarlet/nuke:11.2v5.svg)
+![Image Info](https://images.microbadger.com/badges/image/natescarlet/nuke:11.2v5.svg)
+
+![Version](https://images.microbadger.com/badges/version/natescarlet/nuke:11.2v6.svg)
+![Image Info](https://images.microbadger.com/badges/image/natescarlet/nuke:11.2v6.svg)
+
+![Version](https://images.microbadger.com/badges/version/natescarlet/nuke:11.3v1.svg)
+![Image Info](https://images.microbadger.com/badges/image/natescarlet/nuke:11.3v1.svg)
+
+![Version](https://images.microbadger.com/badges/version/natescarlet/nuke:11.3v2.svg)
+![Image Info](https://images.microbadger.com/badges/image/natescarlet/nuke:11.3v2.svg)
+
 ![Version](https://images.microbadger.com/badges/version/natescarlet/nuke:11.3v3.svg)
 ![Image Info](https://images.microbadger.com/badges/image/natescarlet/nuke:11.3v3.svg)
+
+![Version](https://images.microbadger.com/badges/version/natescarlet/nuke:11.3v4.svg)
+![Image Info](https://images.microbadger.com/badges/image/natescarlet/nuke:11.3v4.svg)

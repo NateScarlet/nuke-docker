@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """Get image badges markdown for README.md.  """
 from update_config import get_versions
 
