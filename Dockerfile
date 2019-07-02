@@ -31,11 +31,13 @@ RUN wget -P /tmp/ \
 
 FROM base AS install
 
+ARG PIP_INDEX_URL=https://mirrors.huaweicloud.com/repository/pypi/simple
 RUN apt-get update &&\
     apt-get -y install \
     x11-apps x11vnc \
     libglu1-mesa libglib2.0-0 libsdl1.2debian libgl1-mesa-glx \
-    sudo python-pip
+    sudo python-pip &&\
+    pip install -U pip
 
 COPY --from=download /app/ /app/
 
