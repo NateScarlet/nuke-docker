@@ -73,6 +73,7 @@ FROM install AS release
 RUN set -e
 
 ENV DEBIAN_FRONTEND=
+ENV LC_ALL=C.UTF-8
 LABEL author='NateScarlet@Gmail.com'
 
 CMD ["Nuke", "-t"]
