@@ -52,8 +52,8 @@ RUN ln -s /app/Nuke${NUKE_VERSION}/Nuke${NUKE_MAJOR}.${NUKE_MINOR} /usr/local/bi
 RUN ln -s /app/Nuke${NUKE_VERSION}/Nuke${NUKE_MAJOR}.${NUKE_MINOR} /usr/local/bin/Nuke${NUKE_MAJOR}.${NUKE_MINOR}
 USER nuke
 
-ENV PATH=/app/Nuke${NUKE_VERSION}:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-ENV PYTHONPATH=/app/Nuke${NUKE_VERSION}
+ENV PATH=/app/Nuke${NUKE_VERSION}:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/nuke/.local/bin
+ENV PYTHONPATH=/app/Nuke${NUKE_VERSION}/lib/python2.7/site-packages
 
 ARG foundry_LICENSE=5053@10.0.2.2
 ENV foundry_LICENSE=${foundry_LICENSE}
