@@ -1,12 +1,6 @@
-FROM debian AS base
+FROM python:2 AS base
 
 RUN set +e
-
-ARG DEBIAN_MIRROR=http://mirrors.huaweicloud.com/debian
-RUN if [ ! -z $DEBIAN_MIRROR ]; then \
-    sed -i "s@http://.\+\.debian\.org/debian@$DEBIAN_MIRROR@g" /etc/apt/sources.list \
-    && cat /etc/apt/sources.list; \
-    fi
 
 ARG NUKE_MAJOR=10
 ARG NUKE_MINOR=5
@@ -18,26 +12,29 @@ ENV NUKE_MINOR=${NUKE_MINOR}
 ENV NUKE_PATCH=${NUKE_PATCH}
 ENV NUKE_VERSION=${NUKE_MAJOR}.${NUKE_MINOR}v${NUKE_PATCH}
 
-RUN apt-get update
-
 FROM base as download
 
-RUN apt-get -y install wget p7zip-full
+WORKDIR /app
 RUN wget -P /tmp/ \
     https://thefoundry.s3.amazonaws.com/products/nuke/releases/${NUKE_VERSION}/Nuke${NUKE_VERSION}-linux-x86-release-64.tgz &&\
     tar -C /tmp -xvzf /tmp/Nuke${NUKE_VERSION}-linux-x86-release-64.tgz &&\
-    7z x -tzip -bsp1 /tmp/Nuke${NUKE_VERSION}-linux-x86-release-64-installer -o/app/Nuke${NUKE_VERSION} &&\
+    unzip /tmp/Nuke${NUKE_VERSION}-linux-x86-release-64-installer -d Nuke${NUKE_VERSION} &&\
     rm -vf /tmp/*
 
 FROM base AS install
+
+ARG DEBIAN_MIRROR=http://mirrors.huaweicloud.com/debian
+RUN if [ ! -z $DEBIAN_MIRROR ]; then \
+    sed -i "s@http://.\+\.debian\.org/debian@$DEBIAN_MIRROR@g" /etc/apt/sources.list \
+    && cat /etc/apt/sources.list; \
+    fi
 
 ARG PIP_INDEX_URL=https://mirrors.huaweicloud.com/repository/pypi/simple
 RUN apt-get update &&\
     apt-get -y install \
     x11-apps x11vnc \
     libglu1-mesa libglib2.0-0 libsdl1.2debian libgl1-mesa-glx \
-    sudo python-pip &&\
-    pip install -U pip
+    sudo
 
 COPY --from=download /app/ /app/
 
@@ -73,7 +70,6 @@ FROM install AS release
 RUN set -e
 
 ENV DEBIAN_FRONTEND=
-ENV LC_ALL=C.UTF-8
 LABEL author='NateScarlet@Gmail.com'
 
 CMD ["Nuke", "-t"]
