@@ -1,4 +1,4 @@
-FROM python:2 AS base
+FROM buildpack-deps:stable AS base
 
 RUN set +e
 
@@ -29,11 +29,13 @@ RUN if [ ! -z $DEBIAN_MIRROR ]; then \
     && cat /etc/apt/sources.list; \
     fi
 
+ARG PIP_INDEX_URL=https://mirrors.huaweicloud.com/repository/pypi/simple
 RUN apt-get update &&\
     apt-get -y install \
     x11-apps x11vnc \
     libglu1-mesa libglib2.0-0 libsdl1.2debian libgl1-mesa-glx \
-    sudo
+    sudo python-pip
+RUN pip install --no-cache-dir virtualenv
 
 COPY --from=download /app/ /app/
 
@@ -57,6 +59,7 @@ FROM install AS test
 
 RUN python --version
 RUN pip --version
+RUN virtualenv --python python .venv
 RUN if [ ! -z ${foundry_LICENSE} ];then\
     python -c 'import nuke; print(nuke.NUKE_VERSION_STRING)' &&\
     Nuke --version;\
