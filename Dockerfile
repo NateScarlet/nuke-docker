@@ -15,13 +15,6 @@ ENV NUKE_VERSION=${NUKE_MAJOR}.${NUKE_MINOR}v${NUKE_PATCH}
 
 FROM base AS install
 
-WORKDIR /app
-RUN wget -P /tmp/ \
-    https://thefoundry.s3.amazonaws.com/products/nuke/releases/${NUKE_VERSION}/Nuke${NUKE_VERSION}-linux-x86-release-64.tgz &&\
-    tar -C /tmp -xvzf /tmp/Nuke${NUKE_VERSION}-linux-x86-release-64.tgz &&\
-    unzip /tmp/Nuke${NUKE_VERSION}-linux-x86-release-64-installer -d Nuke${NUKE_VERSION} &&\
-    rm -vf /tmp/*
-
 ARG DEBIAN_MIRROR=http://mirrors.huaweicloud.com/debian
 RUN if [ ! -z $DEBIAN_MIRROR ]; then \
     sed -i "s@http://.\+\.debian\.org/debian@$DEBIAN_MIRROR@g" /etc/apt/sources.list \
@@ -35,6 +28,13 @@ RUN apt-get update &&\
     libglu1-mesa libglib2.0-0 libsdl1.2debian libgl1-mesa-glx \
     sudo python-pip
 RUN pip install -U --no-cache-dir virtualenv pip
+
+WORKDIR /app
+RUN wget -P /tmp/ \
+    https://thefoundry.s3.amazonaws.com/products/nuke/releases/${NUKE_VERSION}/Nuke${NUKE_VERSION}-linux-x86-release-64.tgz &&\
+    tar -C /tmp -xvzf /tmp/Nuke${NUKE_VERSION}-linux-x86-release-64.tgz &&\
+    unzip /tmp/Nuke${NUKE_VERSION}-linux-x86-release-64-installer -d Nuke${NUKE_VERSION} &&\
+    rm -vf /tmp/*
 
 RUN useradd -rmU -s /bin/bash nuke &&\
     chown nuke:nuke /app/Nuke${NUKE_VERSION} &&\
