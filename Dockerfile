@@ -1,6 +1,7 @@
 FROM buildpack-deps:stable AS base
 
-RUN set +e
+RUN set -e
+ENV LC_ALL=C.UTF-8
 
 ARG NUKE_MAJOR=10
 ARG NUKE_MINOR=5
@@ -68,7 +69,7 @@ RUN sudo echo testing_sudo
 
 FROM install AS release
 
-RUN set -e
+RUN set +e
 
 ENV DEBIAN_FRONTEND=
 LABEL author='NateScarlet@Gmail.com'
