@@ -27,7 +27,6 @@ commands:
             <<#parameters.extra_build_args>><<parameters.extra_build_args>><</parameters.extra_build_args>>
             --build-arg DEBIAN_MIRROR=
             --build-arg foundry_LICENSE=
-            --build-arg PIP_INDEX_URL=
             --build-arg NUKE_MAJOR=<< parameters.major >>
             --build-arg NUKE_MINOR=<< parameters.minor >>
             --build-arg NUKE_PATCH=<< parameters.patch >>
