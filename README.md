@@ -9,7 +9,7 @@
 
 The foundry nuke in docker container
 
-- [x] Can be use as nuke plugin test environment
+- [x] Can be use as nuke plugin test environment: [example](https://github.com/WuLiFang/Nuke/blob/69239d67ba8b5457c949ce29a5362711c242ac4a/.drone.yml)
 - [x] Prebuilt images for all nuke versions that downloadable from official site
 
 ## Usage
