@@ -57,6 +57,16 @@ docker build --build-arg NUKE_MAJOR=10 --build-arg NUKE_MINOR=5 --build-arg NUKE
 
 New nuke version will be auto added by CI on the 1st of every month.
 
+tags:
+
+- latest: `latest`
+
+- major: `9`, `10`, `11`, `12`
+
+- minor: `9.0`, `10.0`, `10.5`, ...
+
+- patch: `9.0v1`, `9.0v2`, `9.0v3`, ...
+
 <!-- image badges start -->
 
 ![9.0v1](https://images.microbadger.com/badges/version/natescarlet/nuke:9.0v1.svg)

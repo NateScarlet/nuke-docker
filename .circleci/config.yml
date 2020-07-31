@@ -100,6 +100,7 @@ jobs:
           major: 9
           minor: 0
           patch: 9
+          extra_build_args: --tag natescarlet/nuke:9 --tag natescarlet/nuke:9.0
   publish-10-0-1:
     executor: docker
     steps:
@@ -142,6 +143,7 @@ jobs:
           major: 10
           minor: 0
           patch: 6
+          extra_build_args: --tag natescarlet/nuke:10.0
   publish-10-5-1:
     executor: docker
     steps:
@@ -198,6 +200,7 @@ jobs:
           major: 10
           minor: 5
           patch: 8
+          extra_build_args: --tag natescarlet/nuke:10 --tag natescarlet/nuke:10.5
   publish-11-0-1:
     executor: docker
     steps:
@@ -226,6 +229,7 @@ jobs:
           major: 11
           minor: 0
           patch: 4
+          extra_build_args: --tag natescarlet/nuke:11.0
   publish-11-1-1:
     executor: docker
     steps:
@@ -268,6 +272,7 @@ jobs:
           major: 11
           minor: 1
           patch: 6
+          extra_build_args: --tag natescarlet/nuke:11.1
   publish-11-2-1:
     executor: docker
     steps:
@@ -317,6 +322,7 @@ jobs:
           major: 11
           minor: 2
           patch: 7
+          extra_build_args: --tag natescarlet/nuke:11.2
   publish-11-3-1:
     executor: docker
     steps:
@@ -359,6 +365,7 @@ jobs:
           major: 11
           minor: 3
           patch: 6
+          extra_build_args: --tag natescarlet/nuke:11 --tag natescarlet/nuke:11.3
   publish-12-0-1:
     executor: docker
     steps:
@@ -366,7 +373,7 @@ jobs:
           major: 12
           minor: 0
           patch: 1
-          extra_build_args: --tag natescarlet/nuke:latest
+          extra_build_args: --tag natescarlet/nuke:latest --tag natescarlet/nuke:12 --tag natescarlet/nuke:12.0
 workflows:
   version: 2
   build and publish:

@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 """Generate circle ci config.  """
 
+#pylint: disable=unsubscriptable-object
+
 from pathlib import Path
 
 from update_versions import load_versions
@@ -47,6 +49,14 @@ commands:
 '''
 
 
+def _get_extra_build_arg_lines(tags):
+    if not tags:
+        return
+    yield f'''\
+          extra_build_args: {" ".join([f"--tag natescarlet/nuke:{i}" for i in tags])}
+'''
+
+
 def generate_config():
     """Config generator.  """
 
@@ -56,7 +66,18 @@ jobs:
 '''
 
     jobs = []
+    last = None
     for i in load_versions():
+        last_extra_tags = []
+        if last is None:
+            pass
+        elif last[0] != i[0]:
+            last_extra_tags.append(last[0])
+            last_extra_tags.append(f'{last[0]}.{last[1]}')
+        elif last[1] != i[1]:
+            last_extra_tags.append(f'{last[0]}.{last[1]}')
+        yield from _get_extra_build_arg_lines(last_extra_tags)
+
         jobname = f'publish-{i[0]}-{i[1]}-{i[2]}'
         jobs.append(jobname)
         yield f'''\
@@ -68,10 +89,9 @@ jobs:
           minor: {i[1]}
           patch: {i[2]}
 '''
-
-    yield f'''\
-          extra_build_args: --tag natescarlet/nuke:latest
-'''
+        last = i
+    assert last is not None
+    yield from _get_extra_build_arg_lines(["latest", last[0], f'{last[0]}.{last[1]}'])
 
     yield '''\
 workflows:

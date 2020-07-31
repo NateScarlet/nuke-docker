@@ -6,6 +6,7 @@
         "itertools",
         "natescarlet",
         "pylint",
+        "unsubscriptable",
         "Visionmongers"
     ]
 }
