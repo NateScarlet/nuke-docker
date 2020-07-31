@@ -17,6 +17,7 @@ def _get_badges_lines():
             "![Image Info](https://images.microbadger.com/badges/image/"
             f"natescarlet/nuke:{tag}.svg)\n"
         )
+        yield "\n"
 
 
 def main():
