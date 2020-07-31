@@ -19,13 +19,17 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
-    - name: Setup Python
+    - name: Setup python
       uses: actions/setup-python@v2
-    - name: Update Nuke Versions
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        then pip install -r requirements.txt
+    - name: Update nuke versions
       run: make -B
-    - name: Git Commit
+    - name: Git commit
       run: ./scripts
-    - name: GitHub Push
+    - name: Github push
       uses: ad-m/github-push-action@v0.6.0
       with:
         github_token:  ${{ secrets.GITHUB_TOKEN }}
