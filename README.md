@@ -1,7 +1,7 @@
 # nuke-docker
 
 [![Build Status](https://img.shields.io/circleci/project/github/NateScarlet/nuke-docker.svg)](https://circleci.com/gh/NateScarlet/nuke-docker)
-![Maintenance](https://img.shields.io/maintenance/yes/2019.svg)
+![Maintenance](https://img.shields.io/maintenance/yes/2020.svg)
 
 [GitHub](https://github.com/NateScarlet/nuke-docker)
 
