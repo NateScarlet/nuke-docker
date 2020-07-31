@@ -1,5 +1,5 @@
 #!/bin/bash
 
 set -ex
-if [ -z "$(git status -s versions.json)" ]; then exit 0; fi
-git commit -a -m "ci: update versions.json"
+if [ -z "$(git status -s)" ]; then exit 0; fi
+git commit -a -m "chore: ci update"

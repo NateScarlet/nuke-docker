@@ -35,7 +35,6 @@ def main():
             lines[:start + 1],
             ["\n"],
             _get_badges_lines(),
-            ["\n"],
             lines[end:],
         ))
 
