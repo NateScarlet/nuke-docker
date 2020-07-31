@@ -10,7 +10,7 @@ def _get_badges_lines():
     for i in load_versions():
         tag = f'{i[0]}.{i[1]}v{i[2]}'
         yield (
-            "![Version](https://images.microbadger.com/badges/version/"
+            f"![{tag}](https://images.microbadger.com/badges/version/"
             f"natescarlet/nuke:{tag}.svg)\n"
         )
         yield (
