@@ -28,7 +28,7 @@ jobs:
     - name: Update nuke versions
       run: make -B
     - name: Git commit
-      run: ./scripts
+      run: ./scripts/ci_commit.sh
     - name: Github push
       uses: ad-m/github-push-action@v0.6.0
       with:
