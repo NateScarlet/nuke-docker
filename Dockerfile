@@ -50,7 +50,6 @@ USER nuke
 ENV PATH=/app/Nuke${NUKE_VERSION}:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/nuke/.local/bin
 
 ARG foundry_LICENSE=5053@10.0.2.2
-ENV foundry_LICENSE=${foundry_LICENSE}
 
 FROM install AS test
 
