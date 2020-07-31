@@ -55,7 +55,7 @@ docker build --build-arg NUKE_MAJOR=10 --build-arg NUKE_MINOR=5 --build-arg NUKE
 
 ## Prebuilt images
 
-New nuke version will be auto updated, CI job runs monthly.
+New nuke version will be auto added by CI on the 1st of every month.
 
 <!-- image badges start -->
 
