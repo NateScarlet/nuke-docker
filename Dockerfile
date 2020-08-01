@@ -38,7 +38,7 @@ RUN mkdir -p /tmp/Nuke/installer &&\
         unzip /tmp/Nuke/installer/Nuke${NUKE_VERSION}-linux-x86-release-64-installer; \
     else \
         $(ls /tmp/Nuke/installer/Nuke*-installer.run) --accept-foundry-eula; \
-    fi; &&\
+    fi &&\
     rm -rf /tmp/Nuke
 
 RUN useradd -rmU -s /bin/bash nuke &&\
