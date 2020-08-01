@@ -30,11 +30,12 @@ ARG PIP_INDEX_URL
 RUN pip install -U --no-cache-dir virtualenv pip
 
 WORKDIR /usr/local/share/thefoundry/Nuke${NUKE_VERSION}
-RUN wget -P /tmp/ \
+RUN mkdir -p /tmp/Nuke/installer &&\
+    wget -P /tmp/Nuke \
     https://thefoundry.s3.amazonaws.com/products/nuke/releases/${NUKE_VERSION}/Nuke${NUKE_VERSION}-linux-x86-release-64.tgz &&\
-    tar -C /tmp -xvzf /tmp/Nuke${NUKE_VERSION}-linux-x86-release-64.tgz &&\
-    /tmp/Nuke${NUKE_VERSION}-linux-x86-release-64-installer.run --accept-foundry-eula &&\
-    rm -vf /tmp/*
+    tar -C /tmp/Nuke/installer -xvzf /tmp/Nuke/Nuke${NUKE_VERSION}-linux-x86-release-64.tgz &&\
+    $(ls /tmp/Nuke/installer/Nuke*) --accept-foundry-eula &&\
+    rm -rf /tmp/Nuke
 
 RUN useradd -rmU -s /bin/bash nuke &&\
     echo "nuke ALL=(ALL) NOPASSWD:ALL" | (EDITOR='tee -a' visudo)
