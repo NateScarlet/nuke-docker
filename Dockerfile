@@ -47,6 +47,8 @@ RUN ln -s Nuke${NUKE_MAJOR}.${NUKE_MINOR} /usr/local/bin/Nuke
 RUN ln -s Nuke${NUKE_MAJOR}.${NUKE_MINOR} /usr/local/bin/Nuke${NUKE_MAJOR}
 RUN ln -s Nuke${NUKE_MAJOR}.${NUKE_MINOR} /usr/local/bin/Nuke${NUKE_MAJOR}.${NUKE_MINOR}
 
+ENV NUKE_PYTHON=/usr/local/share/the-foundry/Nuke${NUKE_VERSION}/python
+
 USER nuke
 WORKDIR /home/nuke
 
@@ -57,8 +59,8 @@ FROM install AS test
 RUN python --version
 RUN pip --version
 RUN virtualenv --python python .venv
-RUN if [ ! -z ${foundry_LICENSE} ];then\
-    python -c 'import nuke; print(nuke.NUKE_VERSION_STRING)' &&\
+RUN if [ -n "${foundry_LICENSE}" ];then\
+    ${NUKE_PYTHON} -c 'import nuke; print(nuke.NUKE_VERSION_STRING)' &&\
     Nuke --version;\
     fi
 RUN sudo echo testing_sudo
