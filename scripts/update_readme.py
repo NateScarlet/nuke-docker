@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 """Update readme by data. """
+
+#pylint: disable=unsubscriptable-object
+
 from itertools import chain
 from pathlib import Path
 
@@ -7,17 +10,19 @@ from update_versions import load_versions
 
 
 def _get_badges_lines():
-    for i in load_versions():
+    last = None
+    versions = load_versions()
+    versions.reverse()
+    for i in versions:
+        if last and (i[0] != last[0] or i[1] != last[1]):
+            yield "\n"
         tag = f'{i[0]}.{i[1]}v{i[2]}'
         yield (
-            f"![{tag}](https://images.microbadger.com/badges/version/"
-            f"natescarlet/nuke:{tag}.svg)\n"
+            f"![{tag}](https://img.shields.io/docker/image-size/"
+            f"natescarlet/nuke/{tag}?label={tag})\n"
         )
-        yield (
-            "![Image Info](https://images.microbadger.com/badges/image/"
-            f"natescarlet/nuke:{tag}.svg)\n"
-        )
-        yield "\n"
+        last = i
+    yield "\n"
 
 
 def main():
@@ -31,12 +36,16 @@ def main():
         raise ValueError("image badges inject marker is missing")
 
     with readme.open("w") as f:
-        f.writelines(chain(
-            lines[:start + 1],
-            ["\n"],
-            _get_badges_lines(),
-            lines[end:],
-        ))
+        try:
+            f.writelines(chain(
+                lines[:start + 1],
+                ["\n"],
+                _get_badges_lines(),
+                lines[end:],
+            ))
+        except Exception as ex:
+            f.writelines(lines)
+            raise ex
 
 
 if __name__ == '__main__':
