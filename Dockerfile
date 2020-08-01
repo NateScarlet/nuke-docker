@@ -15,39 +15,35 @@ ENV NUKE_VERSION=${NUKE_MAJOR}.${NUKE_MINOR}v${NUKE_PATCH}
 
 FROM base AS install
 
-ARG DEBIAN_MIRROR=http://mirrors.huaweicloud.com/debian
-RUN if [ ! -z $DEBIAN_MIRROR ]; then \
+ARG DEBIAN_MIRROR
+RUN if [ -n "$DEBIAN_MIRROR" ]; then \
     sed -i "s@http://.\+\.debian\.org/debian@$DEBIAN_MIRROR@g" /etc/apt/sources.list \
     && cat /etc/apt/sources.list; \
     fi
-
-ARG PIP_INDEX_URL=https://mirrors.huaweicloud.com/repository/pypi/simple
 RUN apt-get update &&\
     apt-get -y install \
     x11-apps x11vnc \
     libglu1-mesa libglib2.0-0 libsdl1.2debian libgl1-mesa-glx \
     sudo python-pip
+
+ARG PIP_INDEX_URL
 RUN pip install -U --no-cache-dir virtualenv pip
 
-WORKDIR /app
+WORKDIR /usr/local/share/thefoundry/Nuke${NUKE_VERSION}
 RUN wget -P /tmp/ \
     https://thefoundry.s3.amazonaws.com/products/nuke/releases/${NUKE_VERSION}/Nuke${NUKE_VERSION}-linux-x86-release-64.tgz &&\
     tar -C /tmp -xvzf /tmp/Nuke${NUKE_VERSION}-linux-x86-release-64.tgz &&\
-    unzip /tmp/Nuke${NUKE_VERSION}-linux-x86-release-64-installer -d Nuke${NUKE_VERSION} &&\
+    /tmp/Nuke${NUKE_VERSION}-linux-x86-release-64-installer.run --accept-foundry-eula &&\
     rm -vf /tmp/*
 
 RUN useradd -rmU -s /bin/bash nuke &&\
-    chown nuke:nuke /app/Nuke${NUKE_VERSION} &&\
     echo "nuke ALL=(ALL) NOPASSWD:ALL" | (EDITOR='tee -a' visudo)
+RUN ln -s Nuke${NUKE_MAJOR}.${NUKE_MINOR} /usr/local/bin/Nuke
+RUN ln -s Nuke${NUKE_MAJOR}.${NUKE_MINOR} /usr/local/bin/Nuke${NUKE_MAJOR}
+RUN ln -s Nuke${NUKE_MAJOR}.${NUKE_MINOR} /usr/local/bin/Nuke${NUKE_MAJOR}.${NUKE_MINOR}
+
 USER nuke
 WORKDIR /home/nuke
-
-USER root
-RUN ln -s /app/Nuke${NUKE_VERSION}/Nuke${NUKE_MAJOR}.${NUKE_MINOR} /usr/local/bin/Nuke
-RUN ln -s /app/Nuke${NUKE_VERSION}/Nuke${NUKE_MAJOR}.${NUKE_MINOR} /usr/local/bin/Nuke${NUKE_MAJOR}.${NUKE_MINOR}
-USER nuke
-
-ENV PATH=/app/Nuke${NUKE_VERSION}:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/nuke/.local/bin
 
 ARG foundry_LICENSE=5053@10.0.2.2
 
