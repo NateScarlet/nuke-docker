@@ -5,7 +5,7 @@
 ![Latest Nuke Version](https://img.shields.io/docker/v/natescarlet/nuke?label=latest%20nuke%20version&sort=semver)
 ![Docker Starts](https://img.shields.io/docker/stars/natescarlet/nuke)
 ![Docker Pulls](https://img.shields.io/docker/pulls/natescarlet/nuke)
-![Maintenance](https://img.shields.io/maintenance/yes/2020.svg)
+![Maintenance](https://img.shields.io/maintenance/yes/2021.svg)
 
 [GitHub](https://github.com/NateScarlet/nuke-docker)
 
