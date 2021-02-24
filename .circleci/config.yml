@@ -31,11 +31,12 @@ commands:
             --build-arg NUKE_PATCH=<< parameters.patch >>
           image: natescarlet/nuke
           tag: << parameters.major >>.<< parameters.minor >>v<< parameters.patch >>
-      - docker-publish/deploy:
-          image: natescarlet/nuke
-          when:
-            and:
-              - equal: [ master, << pipeline.git.branch >> ]
+      - when:
+          condition:
+            equal: [ master, << pipeline.git.branch >> ]
+          steps:
+            - docker-publish/deploy:
+                image: natescarlet/nuke
 jobs:
   publish-9-0-1:
     executor: docker
