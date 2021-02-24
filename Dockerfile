@@ -24,7 +24,10 @@ ARG NUKE_PATCH=8
 
 RUN set -ex ;\
     if [ "${NUKE_MAJOR}" == 9 ]; then \
-        yum -y install SDL ;\
+        yum -y install \
+            SDL \
+            libpng12 \
+        ;\
         yum -y clean all ;\
         rm -rf /var/cache ;\
     fi
