@@ -1,3 +1,4 @@
 .vscode/*
 !.vscode/cspell.json
 __pycache__
+.env
