@@ -43,7 +43,7 @@ RUN set -ex ;\
     if [ -e "/tmp/Nuke/Nuke${NUKE_VERSION}-linux-x86-release-64-installer" ]; then \
         unzip /tmp/Nuke/Nuke${NUKE_VERSION}-linux-x86-release-64-installer ;\
     else \
-        $(ls /tmp/Nuke/installer/Nuke*-installer.run) --accept-foundry-eula ;\
+        $(ls /tmp/Nuke/Nuke*-installer.run) --prefix=.. --accept-foundry-eula ;\
     fi &&\
     rm -rf /tmp/Nuke &&\
     ln -s $(pwd)/Nuke${NUKE_MAJOR}.${NUKE_MINOR} /usr/local/bin/Nuke ;\
