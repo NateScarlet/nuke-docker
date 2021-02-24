@@ -36,9 +36,6 @@ commands:
       - docker-publish/build:
           extra_build_args: >-
             <<#parameters.extra_build_args>><<parameters.extra_build_args>><</parameters.extra_build_args>>
-            --build-arg DEBIAN_MIRROR=
-            --build-arg foundry_LICENSE=
-            --build-arg PIP_INDEX_URL=
             --build-arg NUKE_MAJOR=<< parameters.major >>
             --build-arg NUKE_MINOR=<< parameters.minor >>
             --build-arg NUKE_PATCH=<< parameters.patch >>
@@ -46,6 +43,9 @@ commands:
           tag: << parameters.major >>.<< parameters.minor >>v<< parameters.patch >>
       - docker-publish/deploy:
           image: natescarlet/nuke
+          when:
+            and:
+              - equal: [ master, << pipeline.git.branch >> ]
 '''
 
 
