@@ -22,6 +22,13 @@ ARG NUKE_MAJOR=10
 ARG NUKE_MINOR=5
 ARG NUKE_PATCH=8
 
+RUN set -ex ;\
+    if [ "${NUKE_MAJOR}" == 9 ]; then \
+        yum -y install SDL ;\
+        yum -y clean all ;\
+        rm -rf /var/cache ;\
+    fi
+
 ENV NUKE_MAJOR=${NUKE_MAJOR}
 ENV NUKE_MINOR=${NUKE_MINOR}
 ENV NUKE_PATCH=${NUKE_PATCH}
