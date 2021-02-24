@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 """Generate circle ci config.  """
 
 #pylint: disable=unsubscriptable-object
