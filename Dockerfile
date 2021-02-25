@@ -51,7 +51,11 @@ RUN set -ex ;\
     rm -rf /tmp/Nuke &&\
     ln -s $(pwd)/Nuke${NUKE_MAJOR}.${NUKE_MINOR} /usr/local/bin/Nuke ;\
     ln -s $(pwd)/Nuke${NUKE_MAJOR}.${NUKE_MINOR} /usr/local/bin/Nuke${NUKE_MAJOR} ;\
-    ln -s $(pwd)/Nuke${NUKE_MAJOR}.${NUKE_MINOR} /usr/local/bin/Nuke${NUKE_MAJOR}.${NUKE_MINOR}
+    ln -s $(pwd)/Nuke${NUKE_MAJOR}.${NUKE_MINOR} /usr/local/bin/Nuke${NUKE_MAJOR}.${NUKE_MINOR} ;\
+    # only allow root to write
+    chmod -R go-w .;\
+    # fix permission issue for 9.0v9
+    chmod +x python python2 python2.7
 ENV NUKE_PYTHON=/usr/local/Nuke${NUKE_VERSION}/python
 
 WORKDIR /home/nuke
