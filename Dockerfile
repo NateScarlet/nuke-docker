@@ -4,13 +4,17 @@ FROM centos:7 AS install
 # Example: https://mirrors.aliyun.com/pypi/simple
 ARG PIP_INDEX_URL
 RUN set -ex ;\
-    yum -y groupinstall x11 ;\
     yum -y install \
+        # nuke common requires
+        xorg-x11-server-Xvfb \
+        xorg-x11-server-utils \
+        alsa-lib \
         mesa-libGLU \
+        # utils
         unzip \
         gettext \
         sudo \
-        ; \
+        ;\
     curl https://bootstrap.pypa.io/2.7/get-pip.py | python ;\
     pip install -U --no-cache-dir virtualenv ;\
     yum -y clean all ;\
@@ -22,20 +26,38 @@ ARG NUKE_MAJOR=10
 ARG NUKE_MINOR=5
 ARG NUKE_PATCH=8
 
-RUN set -ex ;\
-    if [ "${NUKE_MAJOR}" == 9 ]; then \
-        yum -y install \
-            SDL \
-            libpng12 \
-        ;\
-        yum -y clean all ;\
-        rm -rf /var/cache ;\
-    fi
-
 ENV NUKE_MAJOR=${NUKE_MAJOR}
 ENV NUKE_MINOR=${NUKE_MINOR}
 ENV NUKE_PATCH=${NUKE_PATCH}
 ENV NUKE_VERSION=${NUKE_MAJOR}.${NUKE_MINOR}v${NUKE_PATCH}
+
+RUN set -ex ;\
+    if [ "${NUKE_MAJOR}" == 11 ]; then \
+        yum -y install \
+            libXft \
+            pulseaudio-libs \
+            libfontconfig \
+            libXcomposite \
+            libXtst \
+        ;\
+    fi ;\
+    if [ "${NUKE_MAJOR}" == 10 ]; then \
+        yum -y install \
+            libXft \
+            libfontconfig \
+        ;\
+    fi ;\
+    if [ "${NUKE_MAJOR}" == 9 ]; then \
+        yum -y install \
+            libXft \
+            libXv \
+            libfontconfig \
+            SDL \
+            libpng12 \
+        ;\
+    fi ;\
+    yum -y clean all ;\
+    rm -rf /var/cache ;
 
 WORKDIR /usr/local/Nuke${NUKE_VERSION}
 ARG NUKE_DOWNLOAD_URL=https://thefoundry.s3.amazonaws.com/products/nuke/releases/${NUKE_VERSION}/Nuke${NUKE_VERSION}-linux-x86-release-64.tgz
@@ -47,19 +69,21 @@ RUN set -ex ;\
     if [ -e "/tmp/Nuke/Nuke${NUKE_VERSION}-linux-x86-release-64-installer" ]; then \
         unzip /tmp/Nuke/Nuke${NUKE_VERSION}-linux-x86-release-64-installer ;\
     else \
-        $(ls /tmp/Nuke/Nuke*-installer.run) --prefix=.. --accept-foundry-eula ;\
+        `ls /tmp/Nuke/Nuke*-installer.run` --prefix=.. --accept-foundry-eula ;\
     fi &&\
     rm -rf /tmp/Nuke ;\
     if [ -n "${NUKE_FILE_EXCLUDE}" ];then \
         rm -rfv ${NUKE_FILE_EXCLUDE} ;\
     fi ;\
-    ln -s $(pwd)/Nuke${NUKE_MAJOR}.${NUKE_MINOR} /usr/local/bin/Nuke ;\
-    ln -s $(pwd)/Nuke${NUKE_MAJOR}.${NUKE_MINOR} /usr/local/bin/Nuke${NUKE_MAJOR} ;\
-    ln -s $(pwd)/Nuke${NUKE_MAJOR}.${NUKE_MINOR} /usr/local/bin/Nuke${NUKE_MAJOR}.${NUKE_MINOR} ;\
+    LD_LIBRARY_PATH=`pwd` ldd Nuke* libstudio* | (set +e; grep 'not found'; case $? in 0) exit 1;; 1) exit 0;; *) exit $?;; esac;) ;\
+    ln -s `pwd`/Nuke${NUKE_MAJOR}.${NUKE_MINOR} /usr/local/bin/Nuke ;\
+    ln -s `pwd`/Nuke${NUKE_MAJOR}.${NUKE_MINOR} /usr/local/bin/Nuke${NUKE_MAJOR} ;\
+    ln -s `pwd`/Nuke${NUKE_MAJOR}.${NUKE_MINOR} /usr/local/bin/Nuke${NUKE_MAJOR}.${NUKE_MINOR} ;\
     # only allow root to write
-    chmod -R go-w .;\
+    chmod -R go-w . ;\
     # fix permission issue for 9.0v9
-    chmod +x python python2 python2.7
+    chmod +x python python2 python2.7 ;
+
 ENV NUKE_PYTHON=/usr/local/Nuke${NUKE_VERSION}/python
 
 WORKDIR /home/nuke
