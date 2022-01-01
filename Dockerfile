@@ -15,7 +15,7 @@ RUN set -ex ;\
         gettext \
         sudo \
         ;\
-    curl https://bootstrap.pypa.io/get-pip.py | python ;\
+    curl https://bootstrap.pypa.io/pip/2.7/get-pip.py | python ;\
     pip install -U --no-cache-dir virtualenv ;\
     yum -y clean all ;\
     rm -rf /var/cache ;\
