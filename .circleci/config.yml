@@ -39,6 +39,10 @@ commands:
                 image: natescarlet/nuke
 jobs:
   publish-9-0-1:
+    filters:
+      branches:
+        only:
+          - master
     executor: docker
     steps:
       - publish:
@@ -46,6 +50,10 @@ jobs:
           minor: 0
           patch: 1
   publish-9-0-2:
+    filters:
+      branches:
+        only:
+          - master
     executor: docker
     steps:
       - publish:
@@ -53,6 +61,10 @@ jobs:
           minor: 0
           patch: 2
   publish-9-0-3:
+    filters:
+      branches:
+        only:
+          - master
     executor: docker
     steps:
       - publish:
@@ -60,6 +72,10 @@ jobs:
           minor: 0
           patch: 3
   publish-9-0-4:
+    filters:
+      branches:
+        only:
+          - master
     executor: docker
     steps:
       - publish:
@@ -67,6 +83,10 @@ jobs:
           minor: 0
           patch: 4
   publish-9-0-5:
+    filters:
+      branches:
+        only:
+          - master
     executor: docker
     steps:
       - publish:
@@ -74,6 +94,10 @@ jobs:
           minor: 0
           patch: 5
   publish-9-0-6:
+    filters:
+      branches:
+        only:
+          - master
     executor: docker
     steps:
       - publish:
@@ -81,6 +105,10 @@ jobs:
           minor: 0
           patch: 6
   publish-9-0-7:
+    filters:
+      branches:
+        only:
+          - master
     executor: docker
     steps:
       - publish:
@@ -88,6 +116,10 @@ jobs:
           minor: 0
           patch: 7
   publish-9-0-8:
+    filters:
+      branches:
+        only:
+          - master
     executor: docker
     steps:
       - publish:
@@ -95,6 +127,10 @@ jobs:
           minor: 0
           patch: 8
   publish-9-0-9:
+    filters:
+      branches:
+        only:
+          - master
     executor: docker
     steps:
       - publish:
@@ -103,6 +139,10 @@ jobs:
           patch: 9
           extra_build_args: --tag natescarlet/nuke:9 --tag natescarlet/nuke:9.0
   publish-10-0-1:
+    filters:
+      branches:
+        only:
+          - master
     executor: docker
     steps:
       - publish:
@@ -110,6 +150,10 @@ jobs:
           minor: 0
           patch: 1
   publish-10-0-2:
+    filters:
+      branches:
+        only:
+          - master
     executor: docker
     steps:
       - publish:
@@ -117,6 +161,10 @@ jobs:
           minor: 0
           patch: 2
   publish-10-0-3:
+    filters:
+      branches:
+        only:
+          - master
     executor: docker
     steps:
       - publish:
@@ -124,6 +172,10 @@ jobs:
           minor: 0
           patch: 3
   publish-10-0-4:
+    filters:
+      branches:
+        only:
+          - master
     executor: docker
     steps:
       - publish:
@@ -131,6 +183,10 @@ jobs:
           minor: 0
           patch: 4
   publish-10-0-5:
+    filters:
+      branches:
+        only:
+          - master
     executor: docker
     steps:
       - publish:
@@ -138,6 +194,10 @@ jobs:
           minor: 0
           patch: 5
   publish-10-0-6:
+    filters:
+      branches:
+        only:
+          - master
     executor: docker
     steps:
       - publish:
@@ -146,6 +206,10 @@ jobs:
           patch: 6
           extra_build_args: --tag natescarlet/nuke:10.0
   publish-10-5-1:
+    filters:
+      branches:
+        only:
+          - master
     executor: docker
     steps:
       - publish:
@@ -153,6 +217,10 @@ jobs:
           minor: 5
           patch: 1
   publish-10-5-2:
+    filters:
+      branches:
+        only:
+          - master
     executor: docker
     steps:
       - publish:
@@ -160,6 +228,10 @@ jobs:
           minor: 5
           patch: 2
   publish-10-5-3:
+    filters:
+      branches:
+        only:
+          - master
     executor: docker
     steps:
       - publish:
@@ -167,6 +239,10 @@ jobs:
           minor: 5
           patch: 3
   publish-10-5-4:
+    filters:
+      branches:
+        only:
+          - master
     executor: docker
     steps:
       - publish:
@@ -174,6 +250,10 @@ jobs:
           minor: 5
           patch: 4
   publish-10-5-5:
+    filters:
+      branches:
+        only:
+          - master
     executor: docker
     steps:
       - publish:
@@ -181,6 +261,10 @@ jobs:
           minor: 5
           patch: 5
   publish-10-5-6:
+    filters:
+      branches:
+        only:
+          - master
     executor: docker
     steps:
       - publish:
@@ -188,6 +272,10 @@ jobs:
           minor: 5
           patch: 6
   publish-10-5-7:
+    filters:
+      branches:
+        only:
+          - master
     executor: docker
     steps:
       - publish:
@@ -195,6 +283,10 @@ jobs:
           minor: 5
           patch: 7
   publish-10-5-8:
+    filters:
+      branches:
+        only:
+          - master
     executor: docker
     steps:
       - publish:
@@ -203,6 +295,10 @@ jobs:
           patch: 8
           extra_build_args: --tag natescarlet/nuke:10 --tag natescarlet/nuke:10.5
   publish-11-0-1:
+    filters:
+      branches:
+        only:
+          - master
     executor: docker
     steps:
       - publish:
@@ -210,6 +306,10 @@ jobs:
           minor: 0
           patch: 1
   publish-11-0-2:
+    filters:
+      branches:
+        only:
+          - master
     executor: docker
     steps:
       - publish:
@@ -217,6 +317,10 @@ jobs:
           minor: 0
           patch: 2
   publish-11-0-3:
+    filters:
+      branches:
+        only:
+          - master
     executor: docker
     steps:
       - publish:
@@ -224,6 +328,10 @@ jobs:
           minor: 0
           patch: 3
   publish-11-0-4:
+    filters:
+      branches:
+        only:
+          - master
     executor: docker
     steps:
       - publish:
@@ -232,6 +340,10 @@ jobs:
           patch: 4
           extra_build_args: --tag natescarlet/nuke:11.0
   publish-11-1-1:
+    filters:
+      branches:
+        only:
+          - master
     executor: docker
     steps:
       - publish:
@@ -239,6 +351,10 @@ jobs:
           minor: 1
           patch: 1
   publish-11-1-2:
+    filters:
+      branches:
+        only:
+          - master
     executor: docker
     steps:
       - publish:
@@ -246,6 +362,10 @@ jobs:
           minor: 1
           patch: 2
   publish-11-1-3:
+    filters:
+      branches:
+        only:
+          - master
     executor: docker
     steps:
       - publish:
@@ -253,6 +373,10 @@ jobs:
           minor: 1
           patch: 3
   publish-11-1-4:
+    filters:
+      branches:
+        only:
+          - master
     executor: docker
     steps:
       - publish:
@@ -260,6 +384,10 @@ jobs:
           minor: 1
           patch: 4
   publish-11-1-5:
+    filters:
+      branches:
+        only:
+          - master
     executor: docker
     steps:
       - publish:
@@ -267,6 +395,10 @@ jobs:
           minor: 1
           patch: 5
   publish-11-1-6:
+    filters:
+      branches:
+        only:
+          - master
     executor: docker
     steps:
       - publish:
@@ -275,6 +407,10 @@ jobs:
           patch: 6
           extra_build_args: --tag natescarlet/nuke:11.1
   publish-11-2-1:
+    filters:
+      branches:
+        only:
+          - master
     executor: docker
     steps:
       - publish:
@@ -282,6 +418,10 @@ jobs:
           minor: 2
           patch: 1
   publish-11-2-2:
+    filters:
+      branches:
+        only:
+          - master
     executor: docker
     steps:
       - publish:
@@ -289,6 +429,10 @@ jobs:
           minor: 2
           patch: 2
   publish-11-2-3:
+    filters:
+      branches:
+        only:
+          - master
     executor: docker
     steps:
       - publish:
@@ -296,6 +440,10 @@ jobs:
           minor: 2
           patch: 3
   publish-11-2-4:
+    filters:
+      branches:
+        only:
+          - master
     executor: docker
     steps:
       - publish:
@@ -303,6 +451,10 @@ jobs:
           minor: 2
           patch: 4
   publish-11-2-5:
+    filters:
+      branches:
+        only:
+          - master
     executor: docker
     steps:
       - publish:
@@ -310,6 +462,10 @@ jobs:
           minor: 2
           patch: 5
   publish-11-2-6:
+    filters:
+      branches:
+        only:
+          - master
     executor: docker
     steps:
       - publish:
@@ -317,6 +473,10 @@ jobs:
           minor: 2
           patch: 6
   publish-11-2-7:
+    filters:
+      branches:
+        only:
+          - master
     executor: docker
     steps:
       - publish:
@@ -325,6 +485,10 @@ jobs:
           patch: 7
           extra_build_args: --tag natescarlet/nuke:11.2
   publish-11-3-1:
+    filters:
+      branches:
+        only:
+          - master
     executor: docker
     steps:
       - publish:
@@ -332,6 +496,10 @@ jobs:
           minor: 3
           patch: 1
   publish-11-3-2:
+    filters:
+      branches:
+        only:
+          - master
     executor: docker
     steps:
       - publish:
@@ -339,6 +507,10 @@ jobs:
           minor: 3
           patch: 2
   publish-11-3-3:
+    filters:
+      branches:
+        only:
+          - master
     executor: docker
     steps:
       - publish:
@@ -346,6 +518,10 @@ jobs:
           minor: 3
           patch: 3
   publish-11-3-4:
+    filters:
+      branches:
+        only:
+          - master
     executor: docker
     steps:
       - publish:
@@ -353,6 +529,10 @@ jobs:
           minor: 3
           patch: 4
   publish-11-3-5:
+    filters:
+      branches:
+        only:
+          - master
     executor: docker
     steps:
       - publish:
@@ -360,6 +540,10 @@ jobs:
           minor: 3
           patch: 5
   publish-11-3-6:
+    filters:
+      branches:
+        only:
+          - master
     executor: docker
     steps:
       - publish:
@@ -368,6 +552,10 @@ jobs:
           patch: 6
           extra_build_args: --tag natescarlet/nuke:11 --tag natescarlet/nuke:11.3
   publish-12-0-1:
+    filters:
+      branches:
+        only:
+          - master
     executor: docker
     steps:
       - publish:

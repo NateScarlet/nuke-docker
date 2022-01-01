@@ -83,6 +83,10 @@ jobs:
         jobs.append(jobname)
         yield f'''\
   {jobname}:
+    filters:
+      branches:
+        only:
+          - master
     executor: docker
     steps:
       - publish:
