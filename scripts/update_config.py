@@ -103,11 +103,11 @@ workflows:
 
     for i in jobs:
         yield f'''\
-      - {i}
-        filters:
-          branches:
-            only:
-              - master
+      - {i}:
+          filters:
+            branches:
+              only:
+                - master
 '''
 
 
