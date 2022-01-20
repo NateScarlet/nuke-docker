@@ -13,6 +13,8 @@ commands:
         type: integer
       patch:
         type: integer
+      url:
+        type: string
       extra_build_args:
         description: >
           Extra flags to pass to docker build. For examples, see
@@ -26,9 +28,10 @@ commands:
       - docker-publish/build:
           extra_build_args: >-
             <<#parameters.extra_build_args>><<parameters.extra_build_args>><</parameters.extra_build_args>>
-            --build-arg NUKE_MAJOR=<< parameters.major >>
-            --build-arg NUKE_MINOR=<< parameters.minor >>
-            --build-arg NUKE_PATCH=<< parameters.patch >>
+            --build-arg 'NUKE_MAJOR=<< parameters.major >>'
+            --build-arg 'NUKE_MINOR=<< parameters.minor >>'
+            --build-arg 'NUKE_PATCH=<< parameters.patch >>'
+            --build-arg 'NUKE_DOWNLOAD_URL=<< parameters.url >>'
           image: natescarlet/nuke
           tag: << parameters.major >>.<< parameters.minor >>v<< parameters.patch >>
       - when:
@@ -45,6 +48,7 @@ jobs:
           major: 9
           minor: 0
           patch: 1
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/9.0v1/Nuke9.0v1-linux-x86-release-64.tgz'
   publish-9-0-2:
     executor: docker
     steps:
@@ -52,6 +56,7 @@ jobs:
           major: 9
           minor: 0
           patch: 2
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/9.0v2/Nuke9.0v2-linux-x86-release-64.tgz'
   publish-9-0-3:
     executor: docker
     steps:
@@ -59,6 +64,7 @@ jobs:
           major: 9
           minor: 0
           patch: 3
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/9.0v3/Nuke9.0v3-linux-x86-release-64.tgz'
   publish-9-0-4:
     executor: docker
     steps:
@@ -66,6 +72,7 @@ jobs:
           major: 9
           minor: 0
           patch: 4
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/9.0v4/Nuke9.0v4-linux-x86-release-64.tgz'
   publish-9-0-5:
     executor: docker
     steps:
@@ -73,6 +80,7 @@ jobs:
           major: 9
           minor: 0
           patch: 5
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/9.0v5/Nuke9.0v5-linux-x86-release-64.tgz'
   publish-9-0-6:
     executor: docker
     steps:
@@ -80,6 +88,7 @@ jobs:
           major: 9
           minor: 0
           patch: 6
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/9.0v6/Nuke9.0v6-linux-x86-release-64.tgz'
   publish-9-0-7:
     executor: docker
     steps:
@@ -87,6 +96,7 @@ jobs:
           major: 9
           minor: 0
           patch: 7
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/9.0v7/Nuke9.0v7-linux-x86-release-64.tgz'
   publish-9-0-8:
     executor: docker
     steps:
@@ -94,6 +104,7 @@ jobs:
           major: 9
           minor: 0
           patch: 8
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/9.0v8/Nuke9.0v8-linux-x86-release-64.tgz'
   publish-9-0-9:
     executor: docker
     steps:
@@ -101,6 +112,7 @@ jobs:
           major: 9
           minor: 0
           patch: 9
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/9.0v9/Nuke9.0v9-linux-x86-release-64.tgz'
           extra_build_args: --tag natescarlet/nuke:9 --tag natescarlet/nuke:9.0
   publish-10-0-1:
     executor: docker
@@ -109,6 +121,7 @@ jobs:
           major: 10
           minor: 0
           patch: 1
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/10.0v1/Nuke10.0v1-linux-x86-release-64.tgz'
   publish-10-0-2:
     executor: docker
     steps:
@@ -116,6 +129,7 @@ jobs:
           major: 10
           minor: 0
           patch: 2
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/10.0v2/Nuke10.0v2-linux-x86-release-64.tgz'
   publish-10-0-3:
     executor: docker
     steps:
@@ -123,6 +137,7 @@ jobs:
           major: 10
           minor: 0
           patch: 3
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/10.0v3/Nuke10.0v3-linux-x86-release-64.tgz'
   publish-10-0-4:
     executor: docker
     steps:
@@ -130,6 +145,7 @@ jobs:
           major: 10
           minor: 0
           patch: 4
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/10.0v4/Nuke10.0v4-linux-x86-release-64.tgz'
   publish-10-0-5:
     executor: docker
     steps:
@@ -137,6 +153,7 @@ jobs:
           major: 10
           minor: 0
           patch: 5
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/10.0v5/Nuke10.0v5-linux-x86-release-64.tgz'
   publish-10-0-6:
     executor: docker
     steps:
@@ -144,6 +161,7 @@ jobs:
           major: 10
           minor: 0
           patch: 6
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/10.0v6/Nuke10.0v6-linux-x86-release-64.tgz'
           extra_build_args: --tag natescarlet/nuke:10.0
   publish-10-5-1:
     executor: docker
@@ -152,6 +170,7 @@ jobs:
           major: 10
           minor: 5
           patch: 1
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/10.5v1/Nuke10.5v1-linux-x86-release-64.tgz'
   publish-10-5-2:
     executor: docker
     steps:
@@ -159,6 +178,7 @@ jobs:
           major: 10
           minor: 5
           patch: 2
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/10.5v2/Nuke10.5v2-linux-x86-release-64.tgz'
   publish-10-5-3:
     executor: docker
     steps:
@@ -166,6 +186,7 @@ jobs:
           major: 10
           minor: 5
           patch: 3
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/10.5v3/Nuke10.5v3-linux-x86-release-64.tgz'
   publish-10-5-4:
     executor: docker
     steps:
@@ -173,6 +194,7 @@ jobs:
           major: 10
           minor: 5
           patch: 4
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/10.5v4/Nuke10.5v4-linux-x86-release-64.tgz'
   publish-10-5-5:
     executor: docker
     steps:
@@ -180,6 +202,7 @@ jobs:
           major: 10
           minor: 5
           patch: 5
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/10.5v5/Nuke10.5v5-linux-x86-release-64.tgz'
   publish-10-5-6:
     executor: docker
     steps:
@@ -187,6 +210,7 @@ jobs:
           major: 10
           minor: 5
           patch: 6
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/10.5v6/Nuke10.5v6-linux-x86-release-64.tgz'
   publish-10-5-7:
     executor: docker
     steps:
@@ -194,6 +218,7 @@ jobs:
           major: 10
           minor: 5
           patch: 7
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/10.5v7/Nuke10.5v7-linux-x86-release-64.tgz'
   publish-10-5-8:
     executor: docker
     steps:
@@ -201,6 +226,7 @@ jobs:
           major: 10
           minor: 5
           patch: 8
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/10.5v8/Nuke10.5v8-linux-x86-release-64.tgz'
           extra_build_args: --tag natescarlet/nuke:10 --tag natescarlet/nuke:10.5
   publish-11-0-1:
     executor: docker
@@ -209,6 +235,7 @@ jobs:
           major: 11
           minor: 0
           patch: 1
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/11.0v1/Nuke11.0v1-linux-x86-release-64.tgz'
   publish-11-0-2:
     executor: docker
     steps:
@@ -216,6 +243,7 @@ jobs:
           major: 11
           minor: 0
           patch: 2
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/11.0v2/Nuke11.0v2-linux-x86-release-64.tgz'
   publish-11-0-3:
     executor: docker
     steps:
@@ -223,6 +251,7 @@ jobs:
           major: 11
           minor: 0
           patch: 3
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/11.0v3/Nuke11.0v3-linux-x86-release-64.tgz'
   publish-11-0-4:
     executor: docker
     steps:
@@ -230,6 +259,7 @@ jobs:
           major: 11
           minor: 0
           patch: 4
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/11.0v4/Nuke11.0v4-linux-x86-release-64.tgz'
           extra_build_args: --tag natescarlet/nuke:11.0
   publish-11-1-1:
     executor: docker
@@ -238,6 +268,7 @@ jobs:
           major: 11
           minor: 1
           patch: 1
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/11.1v1/Nuke11.1v1-linux-x86-release-64.tgz'
   publish-11-1-2:
     executor: docker
     steps:
@@ -245,6 +276,7 @@ jobs:
           major: 11
           minor: 1
           patch: 2
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/11.1v2/Nuke11.1v2-linux-x86-release-64.tgz'
   publish-11-1-3:
     executor: docker
     steps:
@@ -252,6 +284,7 @@ jobs:
           major: 11
           minor: 1
           patch: 3
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/11.1v3/Nuke11.1v3-linux-x86-release-64.tgz'
   publish-11-1-4:
     executor: docker
     steps:
@@ -259,6 +292,7 @@ jobs:
           major: 11
           minor: 1
           patch: 4
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/11.1v4/Nuke11.1v4-linux-x86-release-64.tgz'
   publish-11-1-5:
     executor: docker
     steps:
@@ -266,6 +300,7 @@ jobs:
           major: 11
           minor: 1
           patch: 5
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/11.1v5/Nuke11.1v5-linux-x86-release-64.tgz'
   publish-11-1-6:
     executor: docker
     steps:
@@ -273,6 +308,7 @@ jobs:
           major: 11
           minor: 1
           patch: 6
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/11.1v6/Nuke11.1v6-linux-x86-release-64.tgz'
           extra_build_args: --tag natescarlet/nuke:11.1
   publish-11-2-1:
     executor: docker
@@ -281,6 +317,7 @@ jobs:
           major: 11
           minor: 2
           patch: 1
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/11.2v1/Nuke11.2v1-linux-x86-release-64.tgz'
   publish-11-2-2:
     executor: docker
     steps:
@@ -288,6 +325,7 @@ jobs:
           major: 11
           minor: 2
           patch: 2
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/11.2v2/Nuke11.2v2-linux-x86-release-64.tgz'
   publish-11-2-3:
     executor: docker
     steps:
@@ -295,6 +333,7 @@ jobs:
           major: 11
           minor: 2
           patch: 3
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/11.2v3/Nuke11.2v3-linux-x86-release-64.tgz'
   publish-11-2-4:
     executor: docker
     steps:
@@ -302,6 +341,7 @@ jobs:
           major: 11
           minor: 2
           patch: 4
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/11.2v4/Nuke11.2v4-linux-x86-release-64.tgz'
   publish-11-2-5:
     executor: docker
     steps:
@@ -309,6 +349,7 @@ jobs:
           major: 11
           minor: 2
           patch: 5
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/11.2v5/Nuke11.2v5-linux-x86-release-64.tgz'
   publish-11-2-6:
     executor: docker
     steps:
@@ -316,6 +357,7 @@ jobs:
           major: 11
           minor: 2
           patch: 6
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/11.2v6/Nuke11.2v6-linux-x86-release-64.tgz'
   publish-11-2-7:
     executor: docker
     steps:
@@ -323,6 +365,7 @@ jobs:
           major: 11
           minor: 2
           patch: 7
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/11.2v7/Nuke11.2v7-linux-x86-release-64.tgz'
           extra_build_args: --tag natescarlet/nuke:11.2
   publish-11-3-1:
     executor: docker
@@ -331,6 +374,7 @@ jobs:
           major: 11
           minor: 3
           patch: 1
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/11.3v1/Nuke11.3v1-linux-x86-release-64.tgz'
   publish-11-3-2:
     executor: docker
     steps:
@@ -338,6 +382,7 @@ jobs:
           major: 11
           minor: 3
           patch: 2
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/11.3v2/Nuke11.3v2-linux-x86-release-64.tgz'
   publish-11-3-3:
     executor: docker
     steps:
@@ -345,6 +390,7 @@ jobs:
           major: 11
           minor: 3
           patch: 3
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/11.3v3/Nuke11.3v3-linux-x86-release-64.tgz'
   publish-11-3-4:
     executor: docker
     steps:
@@ -352,6 +398,7 @@ jobs:
           major: 11
           minor: 3
           patch: 4
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/11.3v4/Nuke11.3v4-linux-x86-release-64.tgz'
   publish-11-3-5:
     executor: docker
     steps:
@@ -359,6 +406,7 @@ jobs:
           major: 11
           minor: 3
           patch: 5
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/11.3v5/Nuke11.3v5-linux-x86-release-64.tgz'
   publish-11-3-6:
     executor: docker
     steps:
@@ -366,6 +414,7 @@ jobs:
           major: 11
           minor: 3
           patch: 6
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/11.3v6/Nuke11.3v6-linux-x86-release-64.tgz'
           extra_build_args: --tag natescarlet/nuke:11 --tag natescarlet/nuke:11.3
   publish-12-0-1:
     executor: docker
@@ -374,7 +423,91 @@ jobs:
           major: 12
           minor: 0
           patch: 1
-          extra_build_args: --tag natescarlet/nuke:latest --tag natescarlet/nuke:12 --tag natescarlet/nuke:12.0
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/12.0v1/Nuke12.0v1-linux-x86-release-64.tgz'
+          extra_build_args: --tag natescarlet/nuke:12.0
+  publish-12-2-7:
+    executor: docker
+    steps:
+      - publish:
+          major: 12
+          minor: 2
+          patch: 7
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/12.2v7/Nuke12.2v7-linux-x86_64.tgz'
+  publish-12-2-8:
+    executor: docker
+    steps:
+      - publish:
+          major: 12
+          minor: 2
+          patch: 8
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/12.2v8/Nuke12.2v8-linux-x86_64.tgz'
+  publish-12-2-9:
+    executor: docker
+    steps:
+      - publish:
+          major: 12
+          minor: 2
+          patch: 9
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/12.2v9/Nuke12.2v9-linux-x86_64.tgz'
+  publish-12-2-10:
+    executor: docker
+    steps:
+      - publish:
+          major: 12
+          minor: 2
+          patch: 10
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/12.2v10/Nuke12.2v10-linux-x86_64.tgz'
+          extra_build_args: --tag natescarlet/nuke:12 --tag natescarlet/nuke:12.2
+  publish-13-0-3:
+    executor: docker
+    steps:
+      - publish:
+          major: 13
+          minor: 0
+          patch: 3
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/13.0v3/Nuke13.0v3-linux-x86_64.tgz'
+  publish-13-0-4:
+    executor: docker
+    steps:
+      - publish:
+          major: 13
+          minor: 0
+          patch: 4
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/13.0v4/Nuke13.0v4-linux-x86_64.tgz'
+  publish-13-0-5:
+    executor: docker
+    steps:
+      - publish:
+          major: 13
+          minor: 0
+          patch: 5
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/13.0v5/Nuke13.0v5-linux-x86_64.tgz'
+  publish-13-0-6:
+    executor: docker
+    steps:
+      - publish:
+          major: 13
+          minor: 0
+          patch: 6
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/13.0v6/Nuke13.0v6-linux-x86_64.tgz'
+          extra_build_args: --tag natescarlet/nuke:13.0
+  publish-13-1-1:
+    executor: docker
+    steps:
+      - publish:
+          major: 13
+          minor: 1
+          patch: 1
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/13.1v1/Nuke13.1v1-linux-x86_64.tgz'
+  publish-13-1-2:
+    executor: docker
+    steps:
+      - publish:
+          major: 13
+          minor: 1
+          patch: 2
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/13.1v2/Nuke13.1v2-linux-x86_64.tgz'
+          extra_build_args: --tag natescarlet/nuke:latest --tag natescarlet/nuke:13 --tag natescarlet/nuke:13.1
 workflows:
   version: 2
   build and publish:
@@ -610,6 +743,56 @@ workflows:
               only:
                 - master
       - publish-12-0-1:
+          filters:
+            branches:
+              only:
+                - master
+      - publish-12-2-7:
+          filters:
+            branches:
+              only:
+                - master
+      - publish-12-2-8:
+          filters:
+            branches:
+              only:
+                - master
+      - publish-12-2-9:
+          filters:
+            branches:
+              only:
+                - master
+      - publish-12-2-10:
+          filters:
+            branches:
+              only:
+                - master
+      - publish-13-0-3:
+          filters:
+            branches:
+              only:
+                - master
+      - publish-13-0-4:
+          filters:
+            branches:
+              only:
+                - master
+      - publish-13-0-5:
+          filters:
+            branches:
+              only:
+                - master
+      - publish-13-0-6:
+          filters:
+            branches:
+              only:
+                - master
+      - publish-13-1-1:
+          filters:
+            branches:
+              only:
+                - master
+      - publish-13-1-2:
           filters:
             branches:
               only:

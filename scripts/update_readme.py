@@ -6,12 +6,12 @@
 from itertools import chain
 from pathlib import Path
 
-from update_versions import load_versions
+from update_versions import load_releases
 
 
 def _get_badges_lines():
     last = None
-    versions = load_versions()
+    versions = sorted(i.version for i in load_releases())
     versions.reverse()
     for i in versions:
         if last and (i[0] != last[0] or i[1] != last[1]):
