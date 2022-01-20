@@ -64,12 +64,12 @@ ARG NUKE_DOWNLOAD_URL=https://thefoundry.s3.amazonaws.com/products/nuke/releases
 ARG NUKE_FILE_EXCLUDE="Documentation plugins/OCIOConfigs/configs/aces_* plugins/caravr"
 RUN set -ex ;\
     mkdir -p /tmp/Nuke/ ;\
-    curl -o /tmp/Nuke/Nuke${NUKE_VERSION}-linux-x86-release-64.tgz $(echo ${NUKE_DOWNLOAD_URL} | envsubst) ;\
-    tar -C /tmp/Nuke/ -xvzf /tmp/Nuke/Nuke${NUKE_VERSION}-linux-x86-release-64.tgz ;\
+    curl -o /tmp/Nuke/Nuke${NUKE_VERSION}.tgz $(echo ${NUKE_DOWNLOAD_URL} | envsubst) ;\
+    tar -C /tmp/Nuke/ -xvzf /tmp/Nuke/Nuke${NUKE_VERSION}.tgz ;\
     if [ -e "/tmp/Nuke/Nuke${NUKE_VERSION}-linux-x86-release-64-installer" ]; then \
         unzip /tmp/Nuke/Nuke${NUKE_VERSION}-linux-x86-release-64-installer ;\
     else \
-        `ls /tmp/Nuke/Nuke*-installer.run` --prefix=.. --accept-foundry-eula ;\
+        `ls /tmp/Nuke/Nuke*.run` --prefix=.. --accept-foundry-eula ;\
     fi &&\
     rm -rf /tmp/Nuke ;\
     if [ -n "${NUKE_FILE_EXCLUDE}" ];then \
