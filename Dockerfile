@@ -32,6 +32,16 @@ ENV NUKE_PATCH=${NUKE_PATCH}
 ENV NUKE_VERSION=${NUKE_MAJOR}.${NUKE_MINOR}v${NUKE_PATCH}
 
 RUN set -ex ;\
+    if [ "${NUKE_MAJOR}" == 13 ]; then \
+        yum -y install \
+            libXv \
+        ;\
+    fi ;\
+    if [ "${NUKE_MAJOR}" == 12 ]; then \
+        yum -y install \
+            libXv \
+        ;\
+    fi ;\
     if [ "${NUKE_MAJOR}" == 11 ]; then \
         yum -y install \
             libXft \
