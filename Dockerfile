@@ -95,7 +95,7 @@ RUN set -ex ;\
         ln -s python py ;\
         # fix permission issue for 9.0v9
         chmod +x python python2 python2.7 ;\
-    elif [ -e "python3" ] ;\
+    elif [ -e "python3" ]; then \
         ln -s python3 py ;\
     else \
         ls ;\ 
