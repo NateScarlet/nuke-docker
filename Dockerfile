@@ -92,13 +92,17 @@ RUN set -ex ;\
     # only allow root to write
     chmod -R go-w . ;\
     if [ -e "python" ]; then \
-        export NUKE_PATH=/usr/local/Nuke${NUKE_VERSION}/python ;\
+        ln -s python py ;\
         # fix permission issue for 9.0v9
         chmod +x python python2 python2.7 ;\
+    elif [ -e "python3" ] ;\
+        ln -s python3 py ;\
     else \
         ls ;\ 
         echo "python not found" && exit 1;\
     fi;
+
+ENV NUKE_PYTHON=/usr/local/Nuke${NUKE_VERSION}/py
 
 WORKDIR /home/nuke
 USER nuke
