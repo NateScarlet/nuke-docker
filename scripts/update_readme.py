@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 """Update readme by data. """
 
 #pylint: disable=unsubscriptable-object
