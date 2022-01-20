@@ -71,7 +71,7 @@ RUN set -ex ;\
 
 WORKDIR /usr/local/Nuke${NUKE_VERSION}
 ARG NUKE_DOWNLOAD_URL=https://thefoundry.s3.amazonaws.com/products/nuke/releases/${NUKE_VERSION}/Nuke${NUKE_VERSION}-linux-x86-release-64.tgz
-ARG NUKE_FILE_EXCLUDE="Documentation plugins/OCIOConfigs/configs/aces_* plugins/caravr"
+ARG NUKE_FILE_EXCLUDE="Documentation plugins/OCIOConfigs/configs/aces_* plugins/caravr plugins/air libtorch* libcudnn* libcublas* libcusparse* libcusolver* libmkl*"
 RUN set -ex ;\
     mkdir -p /tmp/Nuke/ ;\
     curl -o /tmp/Nuke/Nuke${NUKE_VERSION}.tgz $(echo ${NUKE_DOWNLOAD_URL} | envsubst) ;\
@@ -85,7 +85,7 @@ RUN set -ex ;\
     if [ -n "${NUKE_FILE_EXCLUDE}" ];then \
         rm -rfv ${NUKE_FILE_EXCLUDE} ;\
     fi ;\
-    LD_LIBRARY_PATH=`pwd` ldd Nuke* libstudio* | (set +e; grep 'not found'; case $? in 0) exit 1;; 1) exit 0;; *) exit $?;; esac;) ;\
+    LD_LIBRARY_PATH=`pwd` ldd Nuke${NUKE_MAJOR}.${NUKE_MINOR} libstudio* | (set +e; grep 'not found'; case $? in 0) exit 1;; 1) exit 0;; *) exit $?;; esac;) ;\
     ln -s `pwd`/Nuke${NUKE_MAJOR}.${NUKE_MINOR} /usr/local/bin/Nuke ;\
     ln -s `pwd`/Nuke${NUKE_MAJOR}.${NUKE_MINOR} /usr/local/bin/Nuke${NUKE_MAJOR} ;\
     ln -s `pwd`/Nuke${NUKE_MAJOR}.${NUKE_MINOR} /usr/local/bin/Nuke${NUKE_MAJOR}.${NUKE_MINOR} ;\
@@ -99,7 +99,7 @@ RUN set -ex ;\
         ln -s python3 py ;\
     else \
         ls ;\ 
-        echo "python not found" && exit 1;\
+            echo "python not found" && exit 1;\
     fi;
 
 ENV NUKE_PYTHON=/usr/local/Nuke${NUKE_VERSION}/py
