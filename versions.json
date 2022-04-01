@@ -232,6 +232,10 @@
     {
       "version": [13, 1, 2],
       "url": "https://thefoundry.s3.amazonaws.com/products/nuke/releases/13.1v2/Nuke13.1v2-linux-x86_64.tgz"
+    },
+    {
+      "version": [13, 1, 3],
+      "url": "https://thefoundry.s3.amazonaws.com/products/nuke/releases/13.1v3/Nuke13.1v3-linux-x86_64.tgz"
     }
   ]
 }
