@@ -531,6 +531,14 @@ jobs:
           minor: 1
           patch: 3
           url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/13.1v3/Nuke13.1v3-linux-x86_64.tgz'
+  publish-13-1-4:
+    executor: docker
+    steps:
+      - publish:
+          major: 13
+          minor: 1
+          patch: 4
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/13.1v4/Nuke13.1v4-linux-x86_64.tgz'
           extra_build_args: --tag natescarlet/nuke:13.1
   publish-13-2-1:
     executor: docker
@@ -540,6 +548,14 @@ jobs:
           minor: 2
           patch: 1
           url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/13.2v1/Nuke13.2v1-linux-x86_64.tgz'
+  publish-13-2-2:
+    executor: docker
+    steps:
+      - publish:
+          major: 13
+          minor: 2
+          patch: 2
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/13.2v2/Nuke13.2v2-linux-x86_64.tgz'
           extra_build_args: --tag natescarlet/nuke:latest --tag natescarlet/nuke:13 --tag natescarlet/nuke:13.2
 workflows:
   version: 2
@@ -845,7 +861,17 @@ workflows:
             branches:
               only:
                 - master
+      - publish-13-1-4:
+          filters:
+            branches:
+              only:
+                - master
       - publish-13-2-1:
+          filters:
+            branches:
+              only:
+                - master
+      - publish-13-2-2:
           filters:
             branches:
               only:

@@ -73,8 +73,10 @@ tags:
 
 <!-- image badges start -->
 
+![13.2v2](https://img.shields.io/docker/image-size/natescarlet/nuke/13.2v2?label=13.2v2)
 ![13.2v1](https://img.shields.io/docker/image-size/natescarlet/nuke/13.2v1?label=13.2v1)
 
+![13.1v4](https://img.shields.io/docker/image-size/natescarlet/nuke/13.1v4?label=13.1v4)
 ![13.1v3](https://img.shields.io/docker/image-size/natescarlet/nuke/13.1v3?label=13.1v3)
 ![13.1v2](https://img.shields.io/docker/image-size/natescarlet/nuke/13.1v2?label=13.1v2)
 ![13.1v1](https://img.shields.io/docker/image-size/natescarlet/nuke/13.1v1?label=13.1v1)
