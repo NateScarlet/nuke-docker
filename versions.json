@@ -206,6 +206,10 @@
       "url": "https://thefoundry.s3.amazonaws.com/products/nuke/releases/12.2v10/Nuke12.2v10-linux-x86_64.tgz"
     },
     {
+      "version": [12, 2, 11],
+      "url": "https://thefoundry.s3.amazonaws.com/products/nuke/releases/12.2v11/Nuke12.2v11-linux-x86_64.tgz"
+    },
+    {
       "version": [13, 0, 3],
       "url": "https://thefoundry.s3.amazonaws.com/products/nuke/releases/13.0v3/Nuke13.0v3-linux-x86_64.tgz"
     },
@@ -250,12 +254,20 @@
       "url": "https://thefoundry.s3.amazonaws.com/products/nuke/releases/13.1v4/Nuke13.1v4-linux-x86_64.tgz"
     },
     {
+      "version": [13, 1, 5],
+      "url": "https://thefoundry.s3.amazonaws.com/products/nuke/releases/13.1v5/Nuke13.1v5-linux-x86_64.tgz"
+    },
+    {
       "version": [13, 2, 1],
       "url": "https://thefoundry.s3.amazonaws.com/products/nuke/releases/13.2v1/Nuke13.2v1-linux-x86_64.tgz"
     },
     {
       "version": [13, 2, 2],
       "url": "https://thefoundry.s3.amazonaws.com/products/nuke/releases/13.2v2/Nuke13.2v2-linux-x86_64.tgz"
+    },
+    {
+      "version": [13, 2, 3],
+      "url": "https://thefoundry.s3.amazonaws.com/products/nuke/releases/13.2v3/Nuke13.2v3-linux-x86_64.tgz"
     }
   ]
 }
