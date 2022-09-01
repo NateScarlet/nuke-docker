@@ -238,6 +238,10 @@
       "url": "https://thefoundry.s3.amazonaws.com/products/nuke/releases/13.0v9/Nuke13.0v9-linux-x86_64.tgz"
     },
     {
+      "version": [13, 0, 10],
+      "url": "https://thefoundry.s3.amazonaws.com/products/nuke/releases/13.0v10/Nuke13.0v10-linux-x86_64.tgz"
+    },
+    {
       "version": [13, 1, 1],
       "url": "https://thefoundry.s3.amazonaws.com/products/nuke/releases/13.1v1/Nuke13.1v1-linux-x86_64.tgz"
     },
