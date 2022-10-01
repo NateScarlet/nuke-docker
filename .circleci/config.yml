@@ -596,6 +596,14 @@ jobs:
           minor: 2
           patch: 3
           url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/13.2v3/Nuke13.2v3-linux-x86_64.tgz'
+  publish-13-2-4:
+    executor: docker
+    steps:
+      - publish:
+          major: 13
+          minor: 2
+          patch: 4
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/13.2v4/Nuke13.2v4-linux-x86_64.tgz'
           extra_build_args: --tag natescarlet/nuke:latest --tag natescarlet/nuke:13 --tag natescarlet/nuke:13.2
 workflows:
   version: 2
@@ -937,6 +945,11 @@ workflows:
               only:
                 - master
       - publish-13-2-3:
+          filters:
+            branches:
+              only:
+                - master
+      - publish-13-2-4:
           filters:
             branches:
               only:
