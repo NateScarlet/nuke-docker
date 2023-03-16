@@ -1,5 +1,5 @@
 # https://www.foundry.com/products/nuke/requirements
-FROM centos:7 AS install
+FROM centos:8 AS install
 
 # Example: https://mirrors.aliyun.com/pypi/simple
 ARG PIP_INDEX_URL
