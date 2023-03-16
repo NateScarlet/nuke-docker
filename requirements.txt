@@ -1,2 +1,2 @@
 requests==2.24.0
-gevent==21.12.0
+gevent==22.10.2
