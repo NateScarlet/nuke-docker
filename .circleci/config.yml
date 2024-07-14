@@ -612,7 +612,137 @@ jobs:
           minor: 2
           patch: 5
           url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/13.2v5/Nuke13.2v5-linux-x86_64.tgz'
-          extra_build_args: --tag natescarlet/nuke:latest --tag natescarlet/nuke:13 --tag natescarlet/nuke:13.2
+  publish-13-2-6:
+    executor: docker
+    steps:
+      - publish:
+          major: 13
+          minor: 2
+          patch: 6
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/13.2v6/Nuke13.2v6-linux-x86_64.tgz'
+  publish-13-2-7:
+    executor: docker
+    steps:
+      - publish:
+          major: 13
+          minor: 2
+          patch: 7
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/13.2v7/Nuke13.2v7-linux-x86_64.tgz'
+  publish-13-2-8:
+    executor: docker
+    steps:
+      - publish:
+          major: 13
+          minor: 2
+          patch: 8
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/13.2v8/Nuke13.2v8-linux-x86_64.tgz'
+  publish-13-2-9:
+    executor: docker
+    steps:
+      - publish:
+          major: 13
+          minor: 2
+          patch: 9
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/13.2v9/Nuke13.2v9-linux-x86_64.tgz'
+          extra_build_args: --tag natescarlet/nuke:13 --tag natescarlet/nuke:13.2
+  publish-14-0-1:
+    executor: docker
+    steps:
+      - publish:
+          major: 14
+          minor: 0
+          patch: 1
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/14.0v1/Nuke14.0v1-linux-x86_64.tgz'
+  publish-14-0-2:
+    executor: docker
+    steps:
+      - publish:
+          major: 14
+          minor: 0
+          patch: 2
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/14.0v2/Nuke14.0v2-linux-x86_64.tgz'
+  publish-14-0-3:
+    executor: docker
+    steps:
+      - publish:
+          major: 14
+          minor: 0
+          patch: 3
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/14.0v3/Nuke14.0v3-linux-x86_64.tgz'
+  publish-14-0-4:
+    executor: docker
+    steps:
+      - publish:
+          major: 14
+          minor: 0
+          patch: 4
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/14.0v4/Nuke14.0v4-linux-x86_64.tgz'
+  publish-14-0-5:
+    executor: docker
+    steps:
+      - publish:
+          major: 14
+          minor: 0
+          patch: 5
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/14.0v5/Nuke14.0v5-linux-x86_64.tgz'
+  publish-14-0-6:
+    executor: docker
+    steps:
+      - publish:
+          major: 14
+          minor: 0
+          patch: 6
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/14.0v6/Nuke14.0v6-linux-x86_64.tgz'
+  publish-14-0-7:
+    executor: docker
+    steps:
+      - publish:
+          major: 14
+          minor: 0
+          patch: 7
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/14.0v7/Nuke14.0v7-linux-x86_64.tgz'
+          extra_build_args: --tag natescarlet/nuke:14.0
+  publish-14-1-1:
+    executor: docker
+    steps:
+      - publish:
+          major: 14
+          minor: 1
+          patch: 1
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/14.1v1/Nuke14.1v1-linux-x86_64.tgz'
+  publish-14-1-2:
+    executor: docker
+    steps:
+      - publish:
+          major: 14
+          minor: 1
+          patch: 2
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/14.1v2/Nuke14.1v2-linux-x86_64.tgz'
+  publish-14-1-3:
+    executor: docker
+    steps:
+      - publish:
+          major: 14
+          minor: 1
+          patch: 3
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/14.1v3/Nuke14.1v3-linux-x86_64.tgz'
+  publish-14-1-4:
+    executor: docker
+    steps:
+      - publish:
+          major: 14
+          minor: 1
+          patch: 4
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/14.1v4/Nuke14.1v4-linux-x86_64.tgz'
+  publish-14-1-5:
+    executor: docker
+    steps:
+      - publish:
+          major: 14
+          minor: 1
+          patch: 5
+          url: 'https://thefoundry.s3.amazonaws.com/products/nuke/releases/14.1v5/Nuke14.1v5-linux-x86_64.tgz'
+          extra_build_args: --tag natescarlet/nuke:latest --tag natescarlet/nuke:14 --tag natescarlet/nuke:14.1
 workflows:
   version: 2
   build and publish:
@@ -963,6 +1093,86 @@ workflows:
               only:
                 - master
       - publish-13-2-5:
+          filters:
+            branches:
+              only:
+                - master
+      - publish-13-2-6:
+          filters:
+            branches:
+              only:
+                - master
+      - publish-13-2-7:
+          filters:
+            branches:
+              only:
+                - master
+      - publish-13-2-8:
+          filters:
+            branches:
+              only:
+                - master
+      - publish-13-2-9:
+          filters:
+            branches:
+              only:
+                - master
+      - publish-14-0-1:
+          filters:
+            branches:
+              only:
+                - master
+      - publish-14-0-2:
+          filters:
+            branches:
+              only:
+                - master
+      - publish-14-0-3:
+          filters:
+            branches:
+              only:
+                - master
+      - publish-14-0-4:
+          filters:
+            branches:
+              only:
+                - master
+      - publish-14-0-5:
+          filters:
+            branches:
+              only:
+                - master
+      - publish-14-0-6:
+          filters:
+            branches:
+              only:
+                - master
+      - publish-14-0-7:
+          filters:
+            branches:
+              only:
+                - master
+      - publish-14-1-1:
+          filters:
+            branches:
+              only:
+                - master
+      - publish-14-1-2:
+          filters:
+            branches:
+              only:
+                - master
+      - publish-14-1-3:
+          filters:
+            branches:
+              only:
+                - master
+      - publish-14-1-4:
+          filters:
+            branches:
+              only:
+                - master
+      - publish-14-1-5:
           filters:
             branches:
               only:

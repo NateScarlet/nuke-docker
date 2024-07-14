@@ -73,6 +73,24 @@ tags:
 
 <!-- image badges start -->
 
+![14.1v5](https://img.shields.io/docker/image-size/natescarlet/nuke/14.1v5?label=14.1v5)
+![14.1v4](https://img.shields.io/docker/image-size/natescarlet/nuke/14.1v4?label=14.1v4)
+![14.1v3](https://img.shields.io/docker/image-size/natescarlet/nuke/14.1v3?label=14.1v3)
+![14.1v2](https://img.shields.io/docker/image-size/natescarlet/nuke/14.1v2?label=14.1v2)
+![14.1v1](https://img.shields.io/docker/image-size/natescarlet/nuke/14.1v1?label=14.1v1)
+
+![14.0v7](https://img.shields.io/docker/image-size/natescarlet/nuke/14.0v7?label=14.0v7)
+![14.0v6](https://img.shields.io/docker/image-size/natescarlet/nuke/14.0v6?label=14.0v6)
+![14.0v5](https://img.shields.io/docker/image-size/natescarlet/nuke/14.0v5?label=14.0v5)
+![14.0v4](https://img.shields.io/docker/image-size/natescarlet/nuke/14.0v4?label=14.0v4)
+![14.0v3](https://img.shields.io/docker/image-size/natescarlet/nuke/14.0v3?label=14.0v3)
+![14.0v2](https://img.shields.io/docker/image-size/natescarlet/nuke/14.0v2?label=14.0v2)
+![14.0v1](https://img.shields.io/docker/image-size/natescarlet/nuke/14.0v1?label=14.0v1)
+
+![13.2v9](https://img.shields.io/docker/image-size/natescarlet/nuke/13.2v9?label=13.2v9)
+![13.2v8](https://img.shields.io/docker/image-size/natescarlet/nuke/13.2v8?label=13.2v8)
+![13.2v7](https://img.shields.io/docker/image-size/natescarlet/nuke/13.2v7?label=13.2v7)
+![13.2v6](https://img.shields.io/docker/image-size/natescarlet/nuke/13.2v6?label=13.2v6)
 ![13.2v5](https://img.shields.io/docker/image-size/natescarlet/nuke/13.2v5?label=13.2v5)
 ![13.2v4](https://img.shields.io/docker/image-size/natescarlet/nuke/13.2v4?label=13.2v4)
 ![13.2v3](https://img.shields.io/docker/image-size/natescarlet/nuke/13.2v3?label=13.2v3)

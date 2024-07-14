@@ -280,6 +280,70 @@
     {
       "version": [13, 2, 5],
       "url": "https://thefoundry.s3.amazonaws.com/products/nuke/releases/13.2v5/Nuke13.2v5-linux-x86_64.tgz"
+    },
+    {
+      "version": [13, 2, 6],
+      "url": "https://thefoundry.s3.amazonaws.com/products/nuke/releases/13.2v6/Nuke13.2v6-linux-x86_64.tgz"
+    },
+    {
+      "version": [13, 2, 7],
+      "url": "https://thefoundry.s3.amazonaws.com/products/nuke/releases/13.2v7/Nuke13.2v7-linux-x86_64.tgz"
+    },
+    {
+      "version": [13, 2, 8],
+      "url": "https://thefoundry.s3.amazonaws.com/products/nuke/releases/13.2v8/Nuke13.2v8-linux-x86_64.tgz"
+    },
+    {
+      "version": [13, 2, 9],
+      "url": "https://thefoundry.s3.amazonaws.com/products/nuke/releases/13.2v9/Nuke13.2v9-linux-x86_64.tgz"
+    },
+    {
+      "version": [14, 0, 1],
+      "url": "https://thefoundry.s3.amazonaws.com/products/nuke/releases/14.0v1/Nuke14.0v1-linux-x86_64.tgz"
+    },
+    {
+      "version": [14, 0, 2],
+      "url": "https://thefoundry.s3.amazonaws.com/products/nuke/releases/14.0v2/Nuke14.0v2-linux-x86_64.tgz"
+    },
+    {
+      "version": [14, 0, 3],
+      "url": "https://thefoundry.s3.amazonaws.com/products/nuke/releases/14.0v3/Nuke14.0v3-linux-x86_64.tgz"
+    },
+    {
+      "version": [14, 0, 4],
+      "url": "https://thefoundry.s3.amazonaws.com/products/nuke/releases/14.0v4/Nuke14.0v4-linux-x86_64.tgz"
+    },
+    {
+      "version": [14, 0, 5],
+      "url": "https://thefoundry.s3.amazonaws.com/products/nuke/releases/14.0v5/Nuke14.0v5-linux-x86_64.tgz"
+    },
+    {
+      "version": [14, 0, 6],
+      "url": "https://thefoundry.s3.amazonaws.com/products/nuke/releases/14.0v6/Nuke14.0v6-linux-x86_64.tgz"
+    },
+    {
+      "version": [14, 0, 7],
+      "url": "https://thefoundry.s3.amazonaws.com/products/nuke/releases/14.0v7/Nuke14.0v7-linux-x86_64.tgz"
+    },
+    {
+      "version": [14, 1, 1],
+      "url": "https://thefoundry.s3.amazonaws.com/products/nuke/releases/14.1v1/Nuke14.1v1-linux-x86_64.tgz"
+    },
+    {
+      "version": [14, 1, 2],
+      "url": "https://thefoundry.s3.amazonaws.com/products/nuke/releases/14.1v2/Nuke14.1v2-linux-x86_64.tgz"
+    },
+    {
+      "version": [14, 1, 3],
+      "url": "https://thefoundry.s3.amazonaws.com/products/nuke/releases/14.1v3/Nuke14.1v3-linux-x86_64.tgz"
+    },
+    {
+      "version": [14, 1, 4],
+      "url": "https://thefoundry.s3.amazonaws.com/products/nuke/releases/14.1v4/Nuke14.1v4-linux-x86_64.tgz"
+    },
+    {
+      "version": [14, 1, 5],
+      "url": "https://thefoundry.s3.amazonaws.com/products/nuke/releases/14.1v5/Nuke14.1v5-linux-x86_64.tgz"
     }
   ]
 }

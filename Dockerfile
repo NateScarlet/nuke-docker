@@ -4,6 +4,12 @@ FROM centos:7 AS install
 # Example: https://mirrors.aliyun.com/pypi/simple
 ARG PIP_INDEX_URL
 RUN set -ex ;\
+    sed -i \
+    -e 's/^mirrorlist/#mirrorlist/' \
+    -e 's/^#baseurl/baseurl/' \
+    -e 's/^# baseurl/baseurl/' \
+    -e 's/mirror\.centos\.org/vault.centos.org/' \
+    /etc/yum.repos.d/*.repo; \
     yum -y install \
         # nuke common requires
         xorg-x11-server-Xvfb \
@@ -32,6 +38,11 @@ ENV NUKE_PATCH=${NUKE_PATCH}
 ENV NUKE_VERSION=${NUKE_MAJOR}.${NUKE_MINOR}v${NUKE_PATCH}
 
 RUN set -ex ;\
+    if [ "${NUKE_MAJOR}" == 14 ]; then \
+        yum -y install \
+            libXv \
+        ;\
+    fi; \
     if [ "${NUKE_MAJOR}" == 13 ]; then \
         yum -y install \
             libXv \
@@ -70,8 +81,8 @@ RUN set -ex ;\
     rm -rf /var/cache ;
 
 WORKDIR /usr/local/Nuke${NUKE_VERSION}
-ARG NUKE_DOWNLOAD_URL=https://thefoundry.s3.amazonaws.com/products/nuke/releases/${NUKE_VERSION}/Nuke${NUKE_VERSION}-linux-x86-release-64.tgz
-ARG NUKE_FILE_EXCLUDE="Documentation plugins/OCIOConfigs/configs/aces_* plugins/caravr plugins/air libtorch* libcudnn* libcublas* libcusparse* libcusolver* libmkl*"
+ARG NUKE_DOWNLOAD_URL=https://thefoundry.s3.amazonaws.com/products/nuke/releases/${NUKE_VERSION}/Nuke${NUKE_VERSION}-linux-x86_64.tgz
+ARG NUKE_FILE_EXCLUDE="Documentation plugins/OCIOConfigs/configs/aces_* plugins/caravr plugins/air libtorch* libcudnn* libcublas* libcusparse* libcusolver*"
 RUN set -ex ;\
     mkdir -p /tmp/Nuke/ ;\
     curl -o /tmp/Nuke/Nuke${NUKE_VERSION}.tgz $(echo ${NUKE_DOWNLOAD_URL} | envsubst) ;\
